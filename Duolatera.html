@@ -67,10 +67,15 @@ Below is usage
 		<header style="background-color: #475527;">
 				
 			<h1 style ="text-align: center; color: #f0f0f0;">
-				Duolatera
+				Duolatera - My Capstone Project
 			</h1>
 			<p style ="text-align: center; color: #f0f0f0;">
 				Scroll down to see my contribution to this project.
+			</p>
+			<p style ="text-align: center; color: #f0f0f0; text-decoration: underline;">
+				<a href="index.html">
+				Or go back to main page
+				</a>
 			</p>
 			
 		</header>
@@ -80,15 +85,16 @@ Below is usage
 			<section id="two" class="wrapper" style="background: #d0d095fb;">
 				<div class="inner alt" >
 					
-					<section class="spotlight">
-						<div style="margin: 10%;"><iframe width="400" height="400"src="https://www.youtube.com/embed/3c0c1eBbZlo"></iframe></div>
+					<section >
+						<div><iframe width="800" height="400"src="https://www.youtube.com/embed/3c0c1eBbZlo"></iframe></div>
 						<div class="content">
 							<h3 style="font-weight: bold;">Unreal Online Subsystem</h3>
 							<p>
-								I implemented and maintained Unreal Online Subsystem into our game, so that two players are synced together. <br>
-								As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency, like syncing players’ locomotion and physical movement faster.<br>
-								I also kept expanding more gameplay stories like grabbing, triggers and laser tools. <br>
-								I spent some time researching the Unreal Engine initialization phase and overriding some default spawning functions to suit our game.
+								I implemented and maintained Unreal Online Subsystem into our game with the listen server model so that two players are synced together. <br>
+								As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency. For example, I optimized syncing players’ physical movement to each other bypassing the server's validation. In my next semester, the validating phase will be added to the reciever player side.<br>
+								I also kept expanding more gameplay stories like grabbing, triggers and laser tools. Making sure that all states are synced is a challenge, i.e. if the host picks up a cube before the client joins the session, the client still needs to see that the cube right now is in the host's hand.<br>
+								We had some trouble when spawning and initializing all game objects in the level, so I spent some time examing the Unreal Engine source code on initialization phase, and overrode some default functions to suit our game.<br>
+								Now I am confident with multiplayer gaming, and willing to take on more projects on different platforms.
 							</p>
 						</div>
 					</section>
@@ -98,7 +104,9 @@ Below is usage
 						<div class="content">
 							<h3 style="font-weight: bold;">Predicting & mapping player movement</h3>
 							<p>
-								With only three motion trackers (the head and two hands), I managed to predict the player's physical movement and map that into in-game avartar with the support of Unreal Engine IK system.<br>
+								With standard VR game devices, I had only three motion trackers (the head and two hands) to play with, while the goal is to map the player's physical movement as accurate as possible. <br>
+								With some research on Kinesiology, I managed to predict the player's physical movement and map that into in-game avartar with the support of Unreal Engine IK system.<br>
+								During the process, I have learned a lot on IK retargeting, as well as human body. <br>
 								Predicted joints are hips, knees, ankles, and elbows. The elbows are still work in progress.								
 							</p>
 							
@@ -109,7 +117,7 @@ Below is usage
 						<div class="content">
 							<h3 style="font-weight: bold;">Asset Production Pipeline</h3>
 							<p>
-								I designed the asset production pipeline for our game. Instead of letting artists make the full material, I only asked them to mask out different areas with single RGBA channels.<br>
+								With my background in 3D modeling, I designed the asset production pipeline for our game. Instead of letting artists make the full material, I only asked them to mask out different areas with single RGBA channels.<br>
 								In this way, we have much more flexibility for tweaking all material properties inside the engine and getting the accurate result in real time.
 							</p>
 
