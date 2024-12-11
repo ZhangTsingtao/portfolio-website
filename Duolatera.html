@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--
+	Fractal by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+
+<!--
+Horizontally place two divs centered
+Below is usage
+-->
+<!-- <div class="container">
+	<div class="item">First Div</div>
+	<div class="item">Second Div</div>
+</div> -->
+  
+  <style>
+	.container {
+	  display: flex;
+	  flex-direction: column; /* Default to vertical on mobile */
+	  align-items: center; /* Center items horizontally */
+	  gap: 20px; /* Space between items */
+	}
+	
+	/* For screens wider than 768px (typical tablet/desktop breakpoint) */
+	@media (min-width: 768px) {
+	  .container {
+		flex-direction: row; /* Horizontal layout on larger screens */
+		justify-content: center; /* Center items horizontally */
+	  }
+	}
+	
+	.item {
+	  width: 200px;
+	  max-width: 90%; /* Prevent overflow */
+	  padding: 20px;
+	  background-color: #f0f0f0;
+	}
+	</style>
+
+
+
+<html>
+	<head>
+		<title>Tsingtao - Duolatera</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+
+		<style>
+			.grid-container {
+			  display: grid;
+			  grid-template-columns: auto;
+			  padding: 10px;
+			}
+			.grid-item {
+			  padding: 20px;
+			  font-size: 30px;
+			  text-align: center;
+			}
+			</style>
+	</head>
+	<body class="major" >
+		<header style="background-color: #475527;">
+				
+			<h1 style ="text-align: center; color: #f0f0f0;">
+				Duolatera
+			</h1>
+			<p style ="text-align: center; color: #f0f0f0;">
+				Scroll down to see my contribution to this project.
+			</p>
+			
+		</header>
+
+
+		<!-- Two -->
+			<section id="two" class="wrapper" style="background: #d0d095fb;">
+				<div class="inner alt" >
+					
+					<section class="spotlight">
+						<div style="margin: 10%;"><iframe width="400" height="400"src="https://www.youtube.com/embed/3c0c1eBbZlo"></iframe></div>
+						<div class="content">
+							<h3 style="font-weight: bold;">Unreal Online Subsystem</h3>
+							<p>
+								I implemented and maintained Unreal Online Subsystem into our game, so that two players are synced together. <br>
+								As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency, like syncing players’ locomotion and physical movement faster.<br>
+								I also kept expanding more gameplay stories like grabbing, triggers and laser tools. <br>
+								I spent some time researching the Unreal Engine initialization phase and overriding some default spawning functions to suit our game.
+							</p>
+						</div>
+					</section>
+
+					<section>
+						<div><img src="images/Mocap.gif" width="582" height="404" margin-right: 150px; /></div>
+						<div class="content">
+							<h3 style="font-weight: bold;">Predicting & mapping player movement</h3>
+							<p>
+								With only three motion trackers (the head and two hands), I managed to predict the player's physical movement and map that into in-game avartar with the support of Unreal Engine IK system.<br>
+								Predicted joints are hips, knees, ankles, and elbows. The elbows are still work in progress.								
+							</p>
+							
+						</div>
+					</section>
+
+					<section>
+						<div class="content">
+							<h3 style="font-weight: bold;">Asset Production Pipeline</h3>
+							<p>
+								I designed the asset production pipeline for our game. Instead of letting artists make the full material, I only asked them to mask out different areas with single RGBA channels.<br>
+								In this way, we have much more flexibility for tweaking all material properties inside the engine and getting the accurate result in real time.
+							</p>
+
+							<div class="grid-container" style="justify-content: center;">
+								<div class="container">
+									<div ><img src="images/AP1.png" width="300" height="250" margin-right: 150px; /></div>
+									<div ><img src="images/AP2.png" width="300" height="250" margin-right: 150px; /></div>
+									<div ><img src="images/AP3.png" width="300" height="250" margin-right: 150px; /></div>
+								</div>
+								<div class="grid-item"> 
+									
+								</div>
+							</div>
+						</div>	
+					</section>
+
+					
+					
+
+		<!-- Three -->
+			<section >
+				<header class="major">
+					<h2 style="text-decoration: underline;">
+						<a href="index.html">
+						Go back to main page
+						</a>
+					</h2>
+				</header>
+				<ul class="actions special">
+					<li>
+				</ul>
+			</section>
+
+		
+
+		<!-- Footer -->
+			<!-- <footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				</ul>
+				<p class="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
+			</footer> -->
+
+		<!-- Scripts -->
+			<!-- <script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script> -->
+
+	</body>
+</html>
