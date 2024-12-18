@@ -103,6 +103,11 @@ Below is usage
 								We had some trouble when spawning and initializing all game objects in the level, so I spent some time examing the Unreal Engine source code on initialization phase, and overrode some default functions to suit our game.<br>
 								Now I am confident with multiplayer gaming, and willing to take on more projects on different platforms.
 							</p>
+							<p>
+								Some useful notes:<br>
+								For syncing to be reliable and quick, use replicated variables instead of Remote Procedure Calls (RPC). Because replicated variables are well optimized synced in Unreal Engine, which takes less traffic, and is synced by an internal interval, and can also work with net cull distance.<br>
+								Even I'm using listen-server model, all authority are still kept in the host, and the client can't do anything without validated by the server. However, there's a workaround by using net role of autonomous proxy, which gives some freedom to the client to send data on their own (like their own movement).
+							</p>
 						</div>
 					</section>
 
@@ -113,6 +118,7 @@ Below is usage
 							<p>
 								With standard VR game devices, I had only three motion trackers (the head and two hands) to play with, while the goal is to map the player's physical movement as accurate as possible. <br>
 								With some research on Kinesiology, I managed to predict the player's physical movement and map that into in-game avartar with the support of Unreal Engine IK system.<br>
+								For prediction, the player's torso is assumed to be uplifted straight, and determined by the head's position. The player's height is measured at the start of the game, and all body part's are scaled based on standard human body porpotions. So the pin points like shoulders and hips are fixed. <br>
 								During the process, I have learned a lot on IK retargeting, as well as human body. <br>
 								Predicted joints are hips, knees, ankles, and elbows. The elbows are still work in progress.								
 							</p>
