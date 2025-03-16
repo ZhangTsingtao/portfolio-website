@@ -93,7 +93,7 @@ Below is usage
 					</section>
 					
 					<section >
-						<div><iframe width="800" height="400"src="https://www.youtube.com/embed/3c0c1eBbZlo"></iframe></div>
+						<div><iframe width="800" height="400"src="https://www.youtube.com/embed/I1gRbKmDvMs"></iframe></div>
 						<div class="content">
 							<h3 style="font-weight: bold;">Unreal Online Subsystem</h3>
 							<p>
@@ -112,15 +112,43 @@ Below is usage
 					</section>
 
 					<section>
-						<div><img src="images/Mocap.gif" width="582" height="404" margin-right: 150px; /></div>
+						<div><img src="images/motionpredict.gif" width="738" height="622" margin-right: 150px; /></div>
 						<div class="content">
 							<h3 style="font-weight: bold;">Predicting & mapping player movement</h3>
 							<p>
 								With standard VR game devices, I had only three motion trackers (the head and two hands) to play with, while the goal is to map the player's physical movement as accurate as possible. <br>
 								With some research on Kinesiology, I managed to predict the player's physical movement and map that into in-game avartar with the support of Unreal Engine IK system.<br>
 								For prediction, the player's torso is assumed to be uplifted straight, and determined by the head's position. The player's height is measured at the start of the game, and all body part's are scaled based on standard human body porpotions. So the pin points like shoulders and hips are fixed. <br>
-								During the process, I have learned a lot on IK retargeting, as well as human body. <br>
-								Predicted joints are hips, knees, ankles, and elbows. The elbows are still work in progress.								
+								During the process, I have learned a lot on IK retargeting, as well as human body. 
+							</p>
+							<p>	Predicted joints are hips, knees, ankles, and elbows. <br>
+								The elbows' tilting angles are clamped in a range, so even only predicted from hands' movement, the elbows won't make an inhuman pose. 							
+							</p>
+							
+						</div>
+					</section>
+
+					<section>
+						<div class="grid-container" style="justify-content: center;">
+							<div ><img src="images/ProceduralDemo3.gif" width="1000" height="350" margin-right: 150px; /></div>
+							<div class="container">
+								<div ><img src="images/ProceduralDemo1.gif" width="500" height="380" margin-right: 150px; /></div>
+								<div ><img src="images/ProceduralDemo2.gif" width="500" height="380" margin-right: 150px; /></div>
+							</div>
+							
+						</div>
+						<div class="content">
+							<h3 style="font-weight: bold;">Procedural Decoration Stripe</h3>
+							<p>
+								For our level designer to decorate in the level without spending too much time, I designed and implemented this procedural decoration stripe, based on Unreal's Spline component.
+							</p>
+							<p>
+								The glyphs are generated randomly, sampled from one texture containing 25 types of glyphs. 
+							</p>
+							<p>	
+								To speed up the spline-constructing phase (because manually moving the control points is tedious and time consuming), 
+								I added the feature that control points can automatically detect nearby geometries, and snapping to the optimal location. <br>
+								Currently it supports up to 2 different surfaces (both inside and outside corner).
 							</p>
 							
 						</div>
@@ -130,18 +158,25 @@ Below is usage
 						<div class="content">
 							<h3 style="font-weight: bold;">Asset Production Pipeline</h3>
 							<p>
-								With my background in 3D modeling, I designed the asset production pipeline for our game. Instead of letting artists make the full material, I only asked them to mask out different areas with single RGBA channels.<br>
-								In this way, we have much more flexibility for tweaking all material properties inside the engine and getting the accurate result in real time.
+								With my background in 3D modeling, I designed the asset production pipeline for our game. I led 2 concept artists and 3 3D artists in producing amazing assets for our game.<br>
+								To best demonstrate our unique render pipeline and to completely control the shaded color, we took a different approach for material.<br>
+								For 3D artists, instead of exporting the material, they only need to export textures that marks out different area using Red (1,0,0) Green (0,1,0) and Blue(0,0,1). We call this type of texture "RGB Channel Masks". In our context, different area means difference in base color (albedo), specular, roughness, anisotropy, and emmisive.<br>
+								In this way, we have much more flexibility for tweaking all material properties inside the engine and getting the accurate result in real time. Using this masking technique, we also gained the ability to produce many variants of the material in no time.
 							</p>
 
 							<div class="grid-container" style="justify-content: center;">
 								<div class="container">
-									<div ><img src="images/AP1.png" width="300" height="250" margin-right: 150px; /></div>
-									<div ><img src="images/AP2.png" width="300" height="250" margin-right: 150px; /></div>
-									<div ><img src="images/AP3.png" width="300" height="250" margin-right: 150px; /></div>
-								</div>
-								<div class="grid-item"> 
+									<div ><img src="images/LaserTool0.png" width="500" height="250" margin-right: 150px; /></div>
+									<div ><img src="images/LaserTool1.png" width="500" height="250" margin-right: 150px; /></div>
 									
+								</div>
+								<div class="container">
+									<div ><img src="images/Button.png" width="300" height="500" margin-right: 150px; /></div>
+									<div ><img src="images/RingSensor.png" width="300" height="500" margin-right: 150px; /></div>
+								</div>
+								
+								<div class="grid-item"> 
+								<img src="images/OpenGate.gif" width="517" height="416" style="align-items: center;" />
 								</div>
 							</div>
 						</div>	
