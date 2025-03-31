@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<!--
+	Photon by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Duolatera</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Header -->
+		<section id = "one" class="main style3" style="background-color: #ffffff;">
+			<div class="container"  >
+				<div class="row gtr-150" >
+					<div class="col-8 col-12-medium imp-medium" >
+						<a href= "index.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="358376";>About Me</font></a>
+						<a href= "Duolatera.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="358376">Duolatera</font></a>
+						<a href= "OceanSim.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="358376">OceanSim</font></a>
+						<a href= "Warped.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="358376">Warped</font></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- One -->
+		<section id="one" class="main style2">
+			<div class="container">				
+				<h1 style = "text-align: center;">
+					<b>Duolatera</b>
+				</h1>
+				<h3 style="font-style: italic; text-align: center;">
+					An online VR 2-players co-op puzzle game.
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h4> 
+							<b>Overview</b>
+						</h4>
+						<p>
+							This is an online VR 2-players co-op puzzle game. 
+							In this game, 2 players will connect through their Steam accounts and work together to solve a series of puzzles in a VR environment.
+							Players will traverse through the overworld and the underworld using laser triggered portals and find their way back to earth by interacting with various devices. 
+						</p>
+						<p>
+							Project Website: <a href="https://drifters-msgdd.github.io/"> <b>Duolatera</b> </a>
+							<br />
+							Try it out here: 
+							<a href="https://drive.google.com/file/d/1wOtnj-SyZd5ifnVirCe8KGhSxMT-4qs-/view"> <b>Google Drive Download</b> </a>
+						</p>
+						<p>	
+							<br/><br/>
+							Here is the gameplay video for Act1 & Act2. <b>↓</b>
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<h4> 
+							<b>Duration</b>
+						</h4>
+						<p>
+							6 months, 2024.8 - now
+						</p>
+						<h4> 
+							<b>Team Size</b>
+						</h4>
+						<p>
+							5
+						</p>
+						<h4> 
+							<b>My Role</b>
+						</h4>
+						<p>
+							Technical Artist, Gameplay/Graphics Programmer
+						</p>
+						<h4> 
+							<b>Tools and Environment</b>
+						</h4>
+						<p>
+							Unreal Engine 5, C++, HLSL, Forward Rendering
+						</p>
+					</div>
+				</div>
+								
+				<iframe width="720" height="720" src="https://www.youtube.com/embed/d44bLRqTe-4"  style="margin-left: 18%;"></iframe>
+				<br/><br/>
+				<h2> 
+					<b>Shaders</b>
+				</h2>
+				<h3> 
+					<b>Global Cel-Shading</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							The overall art style of Duolatera is low-poly and cartoonish, therfore, we decided to use cel-shading as our render style.
+							<br/>
+							Due to multiple reasons such as framerates and Duolatera being a VR game, we use forward shading as our rendering pipeline(default UE5 VR setting).
+							Normally, cel-shading in deffered rendering is achieved by accessing the G-Buffer for various data and applying post-process effect on the whole scene.
+							Using forward rendering means that there is no G-Buffer for me to use and therfore I have to find another way around.
+						</p>
+						<p style="margin-bottom: 1em;">
+							In order to achieve the cel-shading effect, I replicated the phong model and created a material function that converts the input color and textures to cel-shading color.
+							I then made a master material using this material function and now artists can easily simply make a material instance of this master material and play with the parameters on the panels.
+						</p>
+						<p style="margin-bottom: 1em;">
+							This material allows albedo textures, basic tint and up to 3 different RGB texutures on 1 object.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<div class="row gtr-150">
+							<div class="col-6 col-12-medium">
+								<span class="image fit"><img src="images/Cel_VRPawn.png" alt="" /></span>
+								<span class="image fit"><img src="images/Cel_Lasertool.png" alt="" /></span>
+								<span class="image fit"><img src="images/Cel_Ball.png" alt="" /></span>
+							</div>
+							<div class="col-6 col-12-medium">
+								<span class="image fit"><img src="images/Cel_Pillar.png" alt="" /></span>
+								<span class="image fit"><img src="images/Cel_RingSensor.png" alt="" /></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3> 
+					<b>Portal VFX Between 2 Worlds</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium" >
+						<p style="margin-bottom: 1em;">
+							One of the main mechanisms of Duolatera is Portals. Portals exist through out the whole gameplay and they always appear in pairs. 
+							If a portal exists in the Overworld, a corresponding portal must also exists in the Underworld on the same spot. Players travel between worlds through these portals to solve the puzzles.
+						</p>
+						<p style="margin-bottom: 1em;">
+							Portals are all closed by default and are triggered only by "tagging" with laser tools. 
+							Here is a triggered portal in the Overworld and its corresponding portal in the Underworld. 
+						</p>
+						<p style="margin-bottom: 1em;">
+							The portal shader consists of 2 different materials: A <i>base material</i> and an <i>overlay material</i>.
+						</p>
+						<p style="margin-bottom: 1em;">
+							<b>Base portal material</b> is the scene texture captured by invisible cameras from the corresponding portal resulting in the "seethrough" effect.
+						</p>
+						<p style="margin-bottom: 1em;">
+							<b>Overlay portal material</b> is the VFX part of the material. It consists of distortion, "vortex" effects and allows customizations during spawning. 
+							Since portal VFX looks different in Overworld and Underworld, their materials are spawned when portals are triggered open. 
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/OverworldPortal.gif" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;" >
+							<b>Overworld Portal</b>
+						</p>
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/UnderworldPortal.gif" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Underworld Portal</b>	
+						</p>
+					</div>
+				</div>
+				<h3> 
+					<b>Visual Indication Shaders</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							There are several kinds of props that player can interact with. 2 of the most important ones are "Taggables" and "Interactables".
+							"Taggables" are the ones that players can shoot with their laser guns and "Interactables" are the ones that players can interact with their VR hands.
+							It's important that players can distinguish between different types of props so they can interact with them the way we intend.
+						</p>
+						<p style="margin-bottom: 1em;">
+							<b>Taggable material</b> is a world space continuous 3D material which works with all the props in the scene regardless of the object's location and rotation.
+							Since the material is continuous in space, objects that are close to each other looks like they are under the same piece of texture.
+						</p>
+						<p style="margin-bottom: 1em;">
+							<b>Interactable material</b> is a world-space material which only takes the object's Z location value into account.
+							It is commonly used in many games as indication for something that is interactable. 
+						</p>
+						<p style="margin-bottom: 1em;">
+							I made the 2 above materials that are very commonly used in the game into material functions and added them into the master cel-shading material so programmers are able to control the on and off of these 2 effects by simply changing the corresponding scalar parameters on the material. 
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/TaggableMat.gif" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Taggable Material</b>	
+						</p>
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/InteractableMat.gif" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Interactable Material</b>	
+						</p>
+					</div>
+				</div>
+				<h2> 
+					<b>Gameplay</b>
+				</h2>
+				<h3> 
+					<b>Act2</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							As a MVP, Duolatera consists of 3 main acts. 
+							I am in charge of the implementation of all the gameplay and visuals in Act2.	
+						</p>
+						<h4>
+							<b>Phase 1:</b>
+						</h4>
+						<p style="margin-bottom: 1em;">
+							The objective of phase 1 is to put all 4 gabbable symbols in their corresponding slots in order to activate a cannon leading to the next phase. 
+						</p>
+						<p>
+							Each slot has an "answer" symbol on top, which indicates player to insert the grabbale symbol with the same glyph into the slot.
+							When the phase starts, the glyphs on the "answer" symbols are randomly shuffled. The 4 slots are by default closed, indicated by the blue barriers. When a slot is closed, players are not allowed to insert grabbale symbols into the slots.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase1Slots_Closed.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>The Slot Group</b>	
+						</p>
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase1Symbols.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Grabbable Symbols</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							To unlock a slot, players need to use their lasertools to maintain their shooting on the corresponding "answer" symbol on top of the slot, 
+							when that "answer" symbol is activated, the slot below will be unlocked, indicated by the fading of the blue barrier. 
+							This will allow player to insert a grabbable symbol into the slot.
+						</p>
+						<p style="margin-bottom: 1em;">
+							Inserting a grabbable symbol into a slot will result in the corresponding "answer" symbol's Taggable material and shooting progress aura to fade, indicating players that the slot is now filled.
+							After a grabbable symbol is inserted, players can still take it out of the slot, regardless of whether the input is correct or not, indicated by the grabbable material on the grabbable symbols. 
+						</p>
+						<p style="margin-bottom: 1em;">
+							When a correct grabbable symbol is inserted into the slot, the glyph on the corresponding "answer" symbol on top of the slot will light up.
+							</br>When a wrong grabbable symbol is inserted into the slot, the glyph on the corresponding "answer" symbol on top of the slot will show no change.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase1Slot3_Unlocked.png" alt="" /></span>
+							<p style="margin-top: 1em; text-align: center;">
+								<b>Unlocking a Slot</b>	
+							</p>
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase1Slots_Input.png" alt="" /></span>
+							<p style="margin-top: 1em; text-align: center;">
+								<b>Wrong and Correct Input on the Slots</b>	
+							</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When all 4 slots are inserted with the correct grabbable symbols, the slots will be on lockdown, players will no longer be able to take the symbols out from the slots, indicated by the fading of the grabbable material.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase1Slots_Complete.png" alt="" /></span>
+							<p style="margin-top: 1em; text-align: center;">
+								<b>All Slots with Correct Input</b>	
+							</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							At the same time, a cannon will rise up and fire a beam to destroy the debris on the stairs to the watch tower. 
+							</br> And so begins phase 2.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase1CannonBeam.gif" alt="" /></span>
+							<p style="margin-top: 1em; text-align: center;">
+								<b>Cannon Beam</b>	
+							</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h4>
+							<b>Phase 2:</b>
+						</h4>
+						<p style="margin-bottom: 1em;">
+							The objective of phase 2 is somewhat similar to phase 1. 
+							Players need to input the correct key symbols according to the glyphs that will show up in the holo-triangles<b>(the Keyset)</b> to all 8 slots<b>(the Lockset)</b> in order to complete this phase.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2LocksetUnderworld_Closed.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Underworld Lockset and Overworld Keyset</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When this phase starts, there are 8 empty holographic triangles shown on the walls behind the giant portal in the middle of the room. 
+							These are the keyset corresponding to the lockset. Because of the giant portal in the middle, players can only see the Underworld keyset from the Overworld and vice versa.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2LocksetUnderworld_Closed.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Underworld Lockset and Overworld Keyset</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							Upon both players putting their hands in the ringsensors located in each world, the "Answer" glyphs on the Keyset of the corrensponding world will show up at the same time.
+							The glyphs on the Keyset will remain visible as long as both players keep their hands in the ringsensors.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2KeysetOverworld_Activated.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Keyset(glyphs visible) in Overworld</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							The Lockset is locked when the phase starts, it will remain locked as long as the glyphs on the Keyset is visible, indicated by the blue barriers.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2KeysetUnderworld_Activated.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Keyset(glyphs visible) in Underworld</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When 1 or both of the players withdraw their hands from the ringsensors, the glyphs on the Keyset will go invisible, leaving only the holographic triangles lighting up on both sides.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2KeysetOverworld_Deactivated.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Keyset(glyphs invisible) in Overworld</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							The Lockset will then be unlocked indicated by the fading of the blue barriers, allowing players to input the key symbols into the slots.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2KeysetUnderworld_Deactivated.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Keyset(glyphs invisible) in Underworld</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When correct key symbols are put into the slots, the corresponding holo-triangles will light up brightly and are visible from both sides.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2LocksetOverworld_Inputted.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Correct Inputs in the Lockset in Overworld</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							The correct symbols here means the ones with the same glyphs visible on the corrensponding Keyset before players took their hands out of the ringsensors.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2LocksetUnderworld_Inputted.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Correct Inputs in the Lockset in Underworld</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When an incorrect key symbol is inserted in a slot, ALL of the key symbols in both worlds will be ejected from their slots, emptying the Lockset.
+							All the holo-triangles on the Keyset in both worlds will briefly turn red and then once again go back the lit up state.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2LocksetEject.gif" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Incorrect Input in a Slot</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When ALL the slots on the Lockset is filled with the correct key symbols, the holo-triangles will light up brightly in green in both worlds.
+							This marks the completion of phase 2.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/Act2Phase2LocksetOverworld_Completed.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Correct Input for the entire Lockset</b>	
+						</p>
+					</div>
+				</div>
+				<h3> 
+					<b>Save & Load Game System</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h4>
+							Load Game
+						</h4>
+						<p style="margin-bottom: 1em;">
+							Duolatera allows player to start from their desired act once they reached the corresponding checkpoint.
+							When the host player creates the lobby, they can select the act from their checkpoints, the client player joining the same session will be put on the same checkpoint when game loads.
+						</p>
+						<p>
+							This is achieved by saving the selected act number in the host player's game instance and comparing the number with the playerstarts' tag number in game mode.
+							For this purpose, I implemented a C++ VRGameInstance class which is the child class of UE5's GameInstance class and a C++ VRGameMode class which is a child class of UE5's GameMode class.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/LevelSelector.png" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Select Checkpoints</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							When players reach a checkpoint, a level loader will load the next level and unload the previous level upon both players entering the checkpoint area.
+							</br>
+							This is done through UE5's sub-level system, as the game progress, there will only be 1 level that is currently loaded, which is crucial to keeping a overall high framerate.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						<span class="image fit" style="margin-bottom: 1em;"><img src="images/LoadLevel.gif" alt="" /></span>
+						<p style="margin-top: 1em; text-align: center;">
+							<b>Load Level</b>	
+						</p>
+					</div>
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h4>
+							Save Game
+						</h4>
+						<p style="margin-bottom: 1em;">
+							When the host player selects the act they want in the menu and creates a session, the infomation will be passed along in the session property string in extra settings in a session.
+							The player joining the session therfore, would be able to see which act the host wants to start before clicking the join button.
+							This number represents the current act the host is in and will be updated whenever the players get to the next checkpoint.
+						</p>
+						<p>
+							During gameplay, player's location and orientation are updated per telepotation and upon a player logging out, whether it's because of self quitting or internet error.
+							Therfore, rejoining player will be put on the last known legal location and orientation before they left.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">	
+						
+					</div>
+				</div>
+				<h3> 
+					<b>Menu System</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							Duolatera has a main menu and an in-game menu. In the main menu, players can start the game/tutorial, calibrate themselves or exit the game.
+							In the in-game menu, players can leave game, calibrate themselves and change voice chat settings.
+						</p>
+						<p style="margin-bottom: 1em;">	
+							For the main menu, I implemented the UI functionality as well as game pairing functionalities. To start playing, players can either create sessions or join existing sessions.
+						</p>
+						<p style="margin-bottom: 1em;">	
+							For the in-game menu, I implemented the UI functionality and voice chat related functionalities. Players can enable, disable voice chat or set it to push to talk.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<div class="row gtr-150">
+							<div class="col-6 col-12-medium">
+								<span class="image fit"><img src="images/MainMenu.png" alt="" /></span>
+								<span class="image fit"><img src="images/SubMenu.png" alt="" /></span>
+							</div>
+							<div class="col-6 col-12-medium">
+								<span class="image fit"><img src="images/GameSession.png" alt="" /></span>
+								<span class="image fit"><img src="images/CreateGame.png" alt="" /></span>
+								<span class="image fit"><img src="images/JoinGame.png" alt="" /></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h3> 
+					<b>Dialogue System</b>
+				</h3>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							I implemented the dialogue system for the onboarding level. This is intended as a tool for designers to arrange dialogue prompts for onboarding.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/Dialogue.png" alt="" /></span>
+						</div>
+					</div>	
+				</div>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style="margin-bottom: 1em;">
+							Designers can easily add, delete or move an entry. It is also a handy tool for them to set the desired input or lasting time for players to continue to the next promt.
+							By unchecking the "can continue" box, designers can set custom events to take place before the next dialogue entry.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/DialogueSystem.png" alt="" /></span>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</section>
+	
+		<!-- Footer -->
+		<section id="footer">
+			<div class = "container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style = "text-align:left; margin: 0 0 0 0; font-size: 1.25em;" >
+							<b>Noya Cai</b> 
+						</p>	
+						<p style = "text-align:left;  margin: 0 0 0 0;" >
+							Technical Artist / Gameplay Programmer
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						Email: <a href="mailto: qimiaocai011110@gmail.com"> qimiaocai011110@gmail.com </a>
+						<br>Phone: 585-317-5388
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
