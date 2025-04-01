@@ -1,231 +1,349 @@
 <!DOCTYPE HTML>
 <!--
-	Fractal by HTML5 UP
+	Photon by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-
-
-<!--
-Horizontally place two divs centered
-Below is usage
--->
-<!-- <div class="container">
-	<div class="item">First Div</div>
-	<div class="item">Second Div</div>
-</div> -->
-  
-  <style>
-	.container {
-	  display: flex;
-	  flex-direction: column; /* Default to vertical on mobile */
-	  align-items: center; /* Center items horizontally */
-	  gap: 20px; /* Space between items */
-	}
-	
-	/* For screens wider than 768px (typical tablet/desktop breakpoint) */
-	@media (min-width: 768px) {
-	  .container {
-		flex-direction: row; /* Horizontal layout on larger screens */
-		justify-content: center; /* Center items horizontally */
-	  }
-	}
-	
-	.item {
-	  width: 200px;
-	  max-width: 90%; /* Prevent overflow */
-	  padding: 20px;
-	  background-color: #f0f0f0;
-	}
-	</style>
-
-
-
 <html>
 	<head>
-		<title>Tsingtao - Duolatera</title>
+		<title>Tsingtao Zhang</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-
-		<style>
-			.grid-container {
-			  display: grid;
-			  grid-template-columns: auto;
-			  padding: 10px;
-			}
-			.grid-item {
-			  padding: 20px;
-			  font-size: 30px;
-			  text-align: center;
-			}
-			</style>
 	</head>
-	<body class="major" >
-		<header style="background-color: #475527;">
-				
-			<h1 style ="text-align: center; color: #f0f0f0;">
-				Duolatera - My Capstone Project
-			</h1>
-			<p style ="text-align: center; color: #f0f0f0;">
-				Scroll down to see my contribution to this project.
-			</p>
-			<p style ="text-align: center; color: #f0f0f0; text-decoration: underline;">
-				<a href="index.html">
-				Or go back to main page
-				</a>
-			</p>
-			
-		</header>
+	<body class="is-preload">
+		<!-- Header -->
+		<section id = "one" class="main style3" style="background-color: #ffffff;">
+			<div class="container"  >
+				<div class="row gtr-150" >
+					<div class="col-8 col-12-medium imp-medium" >
+						<a href= "index.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527";>About Me</font></a>
+						<a href= "Duolatera.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Duolatera</font></a>
+						<!-- <a href= "" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">OceanSim</font></a> -->
+						<a href= "" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">VR Exercise Research</font></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Header -->
 
-
-		<!-- Two -->
-			<section id="two" class="wrapper" style="background: #d0d095fb;">
-				<div class="inner alt" >
-					<section>
-						<p style="text-decoration: underline;">
-							<a href="https://driftersgames.itch.io/" target="_blank">
-								Play the game here!
-							</a>
-						</p>
-					</section>
-					
-					<section >
-						<div><iframe width="800" height="400"src="https://www.youtube.com/embed/I1gRbKmDvMs"></iframe></div>
-						<div class="content">
-							<h3 style="font-weight: bold;">Unreal Online Subsystem</h3>
-							<p>
-								I implemented and maintained Unreal Online Subsystem into our game with the listen server model so that two players are synced together. <br>
-								As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency. For example, I optimized syncing players’ physical movement to each other bypassing the server's validation. In my next semester, the validating phase will be added to the reciever player side.<br>
-								I also kept expanding more gameplay stories like grabbing, triggers and laser tools. Making sure that all states are synced is a challenge, i.e. if the host picks up a cube before the client joins the session, the client still needs to see that the cube right now is in the host's hand.<br>
-								We had some trouble when spawning and initializing all game objects in the level, so I spent some time examing the Unreal Engine source code on initialization phase, and overrode some default functions to suit our game.<br>
-								Now I am confident with multiplayer gaming, and willing to take on more projects on different platforms.
-							</p>
-							<p>
-								Some useful notes:<br>
-								For syncing to be reliable and quick, use replicated variables instead of Remote Procedure Calls (RPC). Because replicated variables are well optimized synced in Unreal Engine, which takes less traffic, and is synced by an internal interval, and can also work with net cull distance.<br>
-								Even I'm using listen-server model, all authority are still kept in the host, and the client can't do anything without validated by the server. However, there's a workaround by using net role of autonomous proxy, which gives some freedom to the client to send data on their own (like their own movement).
-							</p>
-						</div>
-					</section>
-
-					<section>
-						<div><img src="images/motionpredict.gif" width="738" height="622" margin-right: 150px; /></div>
-						<div class="content">
-							<h3 style="font-weight: bold;">Predicting & mapping player movement</h3>
-							<p>
-								With standard VR game devices, I had only three motion trackers (the head and two hands) to play with, while the goal is to map the player's physical movement as accurate as possible. <br>
-								With some research on Kinesiology, I managed to predict the player's physical movement and map that into in-game avartar with the support of Unreal Engine IK system.<br>
-								For prediction, the player's torso is assumed to be uplifted straight, and determined by the head's position. The player's height is measured at the start of the game, and all body part's are scaled based on standard human body porpotions. So the pin points like shoulders and hips are fixed. <br>
-								During the process, I have learned a lot on IK retargeting, as well as human body. 
-							</p>
-							<p>	Predicted joints are hips, knees, ankles, and elbows. <br>
-								The elbows' tilting angles are clamped in a range, so even only predicted from hands' movement, the elbows won't make an inhuman pose. 							
-							</p>
-							
-						</div>
-					</section>
-
-					<section>
-						<div class="grid-container" style="justify-content: center;">
-							<div ><img src="images/ProceduralDemo3.gif" width="1000" height="350" margin-right: 150px; /></div>
-							<div class="container">
-								<div ><img src="images/ProceduralDemo1.gif" width="500" height="380" margin-right: 150px; /></div>
-								<div ><img src="images/ProceduralDemo2.gif" width="500" height="380" margin-right: 150px; /></div>
-							</div>
-							
-						</div>
-						<div class="content">
-							<h3 style="font-weight: bold;">Procedural Decoration Stripe</h3>
-							<p>
-								For our level designer to decorate in the level without spending too much time, I designed and implemented this procedural decoration stripe, based on Unreal's Spline component.
-							</p>
-							<p>
-								The glyphs are generated randomly, sampled from one texture containing 25 types of glyphs. 
-							</p>
-							<p>	
-								To speed up the spline-constructing phase (because manually moving the control points is tedious and time consuming), 
-								I added the feature that control points can automatically detect nearby geometries, and snapping to the optimal location. <br>
-								Currently it supports up to 2 different surfaces (both inside and outside corner).
-							</p>
-							
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<h3 style="font-weight: bold;">Asset Production Pipeline</h3>
-							<p>
-								With my background in 3D modeling, I designed the asset production pipeline for our game. I led 2 concept artists and 3 3D artists in producing amazing assets for our game.<br>
-								To best demonstrate our unique render pipeline and to completely control the shaded color, we took a different approach for material.<br>
-								For 3D artists, instead of exporting the material, they only need to export textures that marks out different area using Red (1,0,0) Green (0,1,0) and Blue(0,0,1). We call this type of texture "RGB Channel Masks". In our context, different area means difference in base color (albedo), specular, roughness, anisotropy, and emmisive.<br>
-								In this way, we have much more flexibility for tweaking all material properties inside the engine and getting the accurate result in real time. Using this masking technique, we also gained the ability to produce many variants of the material in no time.
-							</p>
-
-							<div class="grid-container" style="justify-content: center;">
-								<div class="container">
-									<div ><img src="images/LaserTool0.png" width="500" height="250" margin-right: 150px; /></div>
-									<div ><img src="images/LaserTool1.png" width="500" height="250" margin-right: 150px; /></div>
-									
-								</div>
-								<div class="container">
-									<div ><img src="images/Button.png" width="300" height="500" margin-right: 150px; /></div>
-									<div ><img src="images/RingSensor.png" width="300" height="500" margin-right: 150px; /></div>
-								</div>
-								
-								<div class="grid-item"> 
-								<img src="images/OpenGate.gif" width="517" height="416" style="align-items: center;" />
-								</div>
-							</div>
-						</div>	
-					</section>
-
-					<section>
-						<p style="text-decoration: underline;">
-							<a href="https://driftersgames.itch.io/" target="_blank">
-								Play the game here!
-							</a>
-						</p>
-					</section>
-
-					
-					
-
-		<!-- Three -->
-			<section >
-				<header class="major">
-					<h2 style="text-decoration: underline;">
-						<a href="index.html">
-						Go back to main page
-						</a>
+			<section id = "one" class="main style2" style="background-color: #475527;">
+				<div class="container" >
+					<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Duolatera</font></b></h1>
+					<h2 style="font-style: italic; text-align: center;">
+						An online VR 2-player co-op puzzle game. 
 					</h2>
-				</header>
-				<ul class="actions special">
-					<li>
-				</ul>
+
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium imp-medium">
+							<h3><b>Overview</b></h3>
+							<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
+								This is a coop game consisting of a series of escape room puzzles.<br>
+								2 players must work together to solve the puzzles by traversing through portals and interacting with triggers.<br>
+								Players can connect through Steam or LAN, the game is run in PCVR environment.
+							</p>
+							<p>
+								<form action="https://driftersgames.itch.io/duolatera" target="_self">
+									<button style="border: #475527"><a>Download and play</a></button>
+								</form>
+							</p>
+							
+						</div>
+						<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+							<h3><b>Duration</b></h3>
+							<p>09/2024 - now</p>
+							<h3><b>Team Size</b></h3>
+							<p>5 on core team, 5 on external art team</p>
+							<h3><b>My Contribution</b></h3>
+							<p>Technical Artist and Gameplay Programmer</p>
+							<h3><b>Tools</b></h3>
+							<p>Unreal Engine 5.4, C++, Python, Blender, Perforce</p>
+						</div>
+					</div>		
+				</div>
+				<p align="center">
+					<iframe width="960" height="540" src="https://www.youtube.com/embed/I1gRbKmDvMs" frameborder="0" allowfullscreen></iframe>
+				</p>	
 			</section>
 
-		
+		<!-- One -->
+		<section id="one" class="main style1">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Asset Pipeline</b>
+							</h2>
+							<h3 style="font-style: italic;">
+								Control shaded color with masking 
+							</h3>
+						</header>
+						<h4 style="font-style: italic;">
+							<b>Context:</b>
+						</h4>
+						<p>
+							We are going for mid-poly, NPR, cartoonish cel-shading effect.
+						</p>
+
+						<h4 style="font-style: italic;">
+							<b>Decision:</b>
+						</h4>
+						<p>
+							- Compared to normal asset pipeline, when texturing, instead of creating texture maps, we ask our artists to only create <b>RGB Channel Masks</b> for different areas.<br>
+							Each channel marks up the areas with the same material properties (in most cases, base color/albedo).<br>
+							If more than 3 areas are needed, we create a second RGB Channel Mask, and more if needed.<br>
+							<br>
+							- After the masks are imported to the engine, we then assign the desired color for each RGB channel. <br>
+							And in the cel shader, it goes through all channel used and applies the color we choose.
+						</p>
+
+						<h4 style="font-style: italic;">
+							<b>Rationale: </b>
+						</h4>
+						<p>
+							There are two reasons behind this decision:<br>
+							1. Using <b>RGB Channel masks</b>, we can create many variants of one asset with no time.<br>
+							This is especially useful for 2-player game, where both players need the same asset with slight difference (I.E. Their laser tools).<br>
+							<br>
+							2. To create an unique cel-shading effect, we want to directly control the shaded color on our assets. <br>
+							Using the masks, we can directly assign the final rendered color in Engine. <br>
+							a) It makes it much easier for cel shader to find the right area and apply the desired color.<br>
+							b) It also saves so much time for artists to iterat colors of assets - instead of changing the colors in texture map and reimport it, now they only need to select a new color value.<br>
+							
+						</p>
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<img src="images/LaserToolUVMap.png" width="600" height="300" margin-right: 150px; />
+						<p>UV map</p>
+						<img src="images/LaserToolMasks.png" width="800" height="250" margin-right: 150px; />
+						<p>RGB Channel Mask x3</p>
+
+						<div class="row gtr-150">
+							<div class="col-9 col-12-medium imp-medium">
+								<img src="images/LaserToolWithMask.png" width="500" height="250" margin-right: 150px; />
+								<p>
+									^ Applied with all RGB Channel Masks<br>
+									> Assign desired color to each channel mask
+								</p>
+							</div>
+							<div class="col-3 col-12-medium imp-medium">
+								<img src="images/MISettings.png" width="300" height="400" margin-right: 150px; />
+							</div>
+						</div>
+						<img src="images/LaserToolVariants.png" width="800" height="200" margin-right: 150px; />
+						<p>Easily created variants</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="main style2" style="background-color: #475527;">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Automation Tools</b>
+							</h2>
+							<h3 style="font-style: italic;">
+								Freed from tedious work
+							</h3>
+						</header>
+						<h4 style="font-style: italic;">
+							<b>Quick Asset Check Blender Add-on</b>
+						</h4>
+						<p>
+							Due to our unique asset texture pipeline, it's necessary to check the masks for every assets.<br>
+							However, it is tedious to manually import .fbx file, organize the scene, add all related masks every time for a new asset.<br>
+							So, this Blender add-on, and does the following:<br>
+							<br>
+							- Disable other collections of objects and create a new collection.<br>
+							- Import the .fbx file.<br>
+							- Examine the imported object, find all "Mesh" type (ignoring skeletons and empty objects).<br>
+							- For each "Mesh" type object, apply a material to it.<br>
+							- Find and import all related texture files by name.<br>
+							- Piece textures together and connect to output.
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Quick Asset Check Blender Add-on</b>
+						</h4>
+						<img src="images/QuickCheck.gif" width="800" height="400" margin-right: 150px; />
+						<p>Quick Asset Check Demo</p>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Three -->
+		<section id="three" class="main style1">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Procedural Generation</b>
+							</h2>
+						</header>
+						<h4 style="font-style: italic;">
+							<b>PCG Decoration Stripe</b>
+						</h4>
+						<p>
+							To save the time for our level designer to quickly decorate the level, I designed and implemented this PCG stripe.<br>
+							User only need to edit the control points of spline, and the stripe will be generated with on click.<br>
+							<br>
+							In addition, I implemented a auto snapping tool for spline control points. When getting close to surface, it automatically snaps to nearby surfaces with configured margin.<br>
+							Currently, auto snapping supports 1 face, 2 faces with inside and outside corner, and 3 faces.
+						</p>	
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>PCG Decoration Stripe</b>
+						</h4>
+						<div class="row gtr-150">
+							<div class="col-8 col-12-medium imp-medium">
+								<img src="images/PCGStripe0.gif" width="400" height="300" margin-right: 150px; />
+								<p>
+									Generate textures
+								</p>
+								<img src="images/PCGStripe2.gif" width="400" height="300" margin-right: 150px; />
+								<p>
+									Outside corner
+								</p>
+							</div>
+							<div class="col-4 col-12-medium imp-medium">
+								<img src="images/PCGStripe1.gif" width="400" height="300" margin-right: 150px; />
+								<p>
+									Inside corner
+								</p>
+								<img src="images/PCGStripe3.gif" width="400" height="300" margin-right: 150px; />
+								<p>
+									3 faces
+								</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Four -->
+		<section id="four" class="main style2" style="background-color: #475527;">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Animation Prediction</b>
+							</h2>
+						</header>
+						<p>
+							To increase the immersion, we go for full body player avatar. But Meta Quest can only provide us with 3 tracking points: the head and two hands.<br>
+							In order to implement full body movement, I designed an algorithm to predict the player's movement using Unreal's IK animation system.<br>
+							<br>
+							For legs:<br>
+							- At the start of the game, player's height is measured.<br>
+							- Using the head's height, it computes the hip's height by assuming the player is standing straight.<br>
+							- Cast a line downwards from the hip and get ground location.<br>
+							- Based on the hip height and ground height, interpolate the calf and thigh by assuming it's a squating move.<br>
+							<br>
+							For arms:<br>
+							- Assume the hand is in resting position and the player doesn't spin their wrist.<br>
+							- Set elbow's joint target location using the hand's orientation.<br>
+							- Clamp the elbow's joint target location so it doesn't bend towards the chest.
+						</p>	
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Animation Prediction</b>
+						</h4>
+						<div class="row gtr-150">
+							<div class="col-8 col-12-medium imp-medium">
+								<img src="images/motionpredict.gif" width="800" height="600" margin-right: 150px; />
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Five -->
+		<section id="four" class="main style1" >
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Gameplay Programming</b>
+							</h2>
+						</header>
+						<h4 style="font-style: italic;">
+							<b>Unreal Online Subsystem</b>
+						</h4>
+						<p>
+							I implemented and maintained Unreal Online Subsystem into our game with the listen server model so that two players are synced together. <br>
+							As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency. For example, I optimized syncing players’ physical movement to each other bypassing the server's validation. In my next semester, the validating phase will be added to the reciever player side.<br>
+							I also kept expanding more gameplay stories like grabbing, triggers and laser tools. Making sure that all states are synced is a challenge, i.e. if the host picks up a cube before the client joins the session, the client still needs to see that the cube right now is in the host's hand.<br>
+							We had some trouble when spawning and initializing all game objects in the level, so I spent some time examing the Unreal Engine source code on initialization phase, and overrode some default functions to suit our game.<br>
+							Now I am confident with multiplayer gaming, and willing to take on more projects on different platforms.
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Animation Prediction</b>
+						</h4>
+						<div class="row gtr-150">
+							<div class="col-8 col-12-medium imp-medium">
+								<!-- <img src="images/motionpredict.gif" width="800" height="600" margin-right: 150px; /> -->
+								<p>
+									Some useful notes:<br>
+									For syncing to be reliable and quick, use replicated variables instead of Remote Procedure Calls (RPC). Because replicated variables are well optimized synced in Unreal Engine, which takes less traffic, and is synced by an internal interval, and can also work with net cull distance.<br>
+									Even I'm using listen-server model, all authority are still kept in the host, and the client can't do anything without validated by the server. However, there's a workaround by using net role of autonomous proxy, which gives some freedom to the client to send data on their own (like their own movement).
+								</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- Footer -->
-			<!-- <footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-				</ul>
-				<p class="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
-			</footer> -->
+		<section id="footer">
+			<div class = "container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style = "text-align:left; margin: 0 0 0 0; font-size: 1.25em;" >
+							<b>Tsingtao Zhang</b> 
+						</p>	
+						<p style = "text-align:left;  margin: 0 0 0 0;" >
+							Technical Artist / Gameplay Programmer
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						Email: <a href="mailto: qimiaocai011110@gmail.com"> rickzhangqt@gmail.com </a>
+						<br>Phone: 585-615-0628
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- Scripts -->
-			<!-- <script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script> -->
+			<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
