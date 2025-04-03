@@ -289,26 +289,28 @@
 							<b>Unreal Online Subsystem</b>
 						</h4>
 						<p>
-							I implemented and maintained Unreal Online Subsystem into our game with the listen server model so that two players are synced together. <br>
-							As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency. For example, I optimized syncing players’ physical movement to each other bypassing the server's validation. In my next semester, the validating phase will be added to the reciever player side.<br>
-							I also kept expanding more gameplay stories like grabbing, triggers and laser tools. Making sure that all states are synced is a challenge, i.e. if the host picks up a cube before the client joins the session, the client still needs to see that the cube right now is in the host's hand.<br>
+							I implemented and maintained Unreal Online Subsystem into our game with the listen server model. <br>
+							As our development went further, I kept optimizing the Online Subsystem’s reliability and efficiency. For example, I optimized syncing players’ physical movement to each other bypassing the server's validation.<br>
+							I also kept expanding more gameplay functions like grabbing, triggers and laser tools. Making sure that all states are synced is a challenge, i.e. if the host picks up a cube before the client joins the session, the client still needs to see that the cube right now is in the host's hand.<br>
 							We had some trouble when spawning and initializing all game objects in the level, so I spent some time examing the Unreal Engine source code on initialization phase, and overrode some default functions to suit our game.<br>
-							Now I am confident with multiplayer gaming, and willing to take on more projects on different platforms.
+						</p>
+						<h4 style="font-style: italic;">
+							<b>Some useful notes:</b>
+						</h4>
+						<p>
+							- For syncing to be reliable and quick, use replicated variables instead of Remote Procedure Calls (RPC). Because replicated variables are well optimized synced in Unreal Engine, take less traffic, and is synced by an internal interval, and can also work with net cull distance. Most importantly, it keeps the progress if the client accidently logs off.<br>
+							<br>
+							- Even we're using listen-server model, all authority are still kept in the host, and the client can't do anything without validated by the server. However, there's a workaround by using net role of autonomous proxy, giving some freedom to the client to send data on their own (like their own movement).
 						</p>
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<h4 style="font-style: italic;">
-							<b>Animation Prediction</b>
-						</h4>
+						
 						<div class="row gtr-150">
 							<div class="col-8 col-12-medium imp-medium">
-								<!-- <img src="images/motionpredict.gif" width="800" height="600" margin-right: 150px; /> -->
-								<p>
-									Some useful notes:<br>
-									For syncing to be reliable and quick, use replicated variables instead of Remote Procedure Calls (RPC). Because replicated variables are well optimized synced in Unreal Engine, which takes less traffic, and is synced by an internal interval, and can also work with net cull distance.<br>
-									Even I'm using listen-server model, all authority are still kept in the host, and the client can't do anything without validated by the server. However, there's a workaround by using net role of autonomous proxy, which gives some freedom to the client to send data on their own (like their own movement).
-								</p>
+								<img src="images/GrabInteract.gif" width="700" height="750" margin-right: 150px; />
+								<img src="images/TriggerGate.gif" width="700" height="750" margin-right: 150px; />
+								
 							</div>
 						</div>
 						
