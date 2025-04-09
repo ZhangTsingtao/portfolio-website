@@ -148,13 +148,10 @@
 							<h2>
 								<b>Automation Tools</b>
 							</h2>
-							<h3 style="font-style: italic;">
-								Freed from tedious work
-							</h3>
 						</header>
-						<h4 style="font-style: italic;">
+						<h3 style="font-style: italic;">
 							<b>Quick Asset Check Blender Add-on</b>
-						</h4>
+						</h3>
 						<p>
 							Due to our unique asset texture pipeline, it's necessary to check the masks for every assets.<br>
 							However, it is tedious to manually import .fbx file, organize the scene, add all related masks every time for a new asset.<br>
@@ -175,6 +172,44 @@
 						</h4>
 						<img src="images/QuickCheck.gif" width="800" height="400" margin-right: 150px; />
 						<p>Quick Asset Check Demo</p>
+						
+					</div>
+				</div>
+
+				<!-- Unreal PCG -> Static Mesh -->
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h3 style="font-style: italic;">
+							<b>Unreal PCG to Static Mesh Converter</b>
+						</h3>
+						<h4 style="font-style: italic;">
+							Context And Decision:
+						</h4>
+						<p>
+							Using Unreal PCG drastically saves our time building the level, but since it's an experienmental feature, 
+							we've found glitches especially in the multiplayer context. <br>
+							So to avoid any unforeseeable bugs, we decided to convert all PCG into static meshes.<br>
+							To save time, I made this selecting/replacing tool using Editor Utilites and Python.<br>
+						</p>
+						<h4 style="font-style: italic;">
+							Functions:
+						</h4>
+						<p>
+							- Select all PCG actors in current level.<br>
+							- Clean up any empty static mesh actors in level.<br>
+							- Locate / create the file path for the merged static mesh asset.<br>
+							- After manually merging selected PCG actors using Unreal's MergeActorTool, get reference to the merged static mesh.<br>
+							- Replace all PCG actors with merged static mesh, preserving original transform.<br>
+							
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Unreal PCG to Static Mesh Converter</b>
+						</h4>
+						<img src="images/PCGSelectReplaceDemo.gif" width="800" height="400" margin-right: 150px; />
+						
 						
 					</div>
 				</div>
