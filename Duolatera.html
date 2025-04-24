@@ -142,6 +142,7 @@
 		<!-- Two -->
 		<section id="two" class="main style2" style="background-color: #475527;">
 			<div class="container">
+
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
 						<header class="major">
@@ -149,6 +150,36 @@
 								<b>Automation Tools</b>
 							</h2>
 						</header>
+						<h3 style="font-style: italic;">
+							<b>Albedo to RGB Channel Mask Conversion GUI</b>
+						</h3>
+						<p>
+							After establishing the pipeline, we found out the artists were struggling with creating the RGB Channel Masks, because it's not intuitive and time consuming.<br>
+							To speed up the process and make everyone's life easier, I created this conversion tool GUI.<br>
+							Using the color clustering function in OpenCV, users can easily get the converted masks with a drag and drop and click of a button.<br>
+
+							<br>
+							Its functionalities in detail:<br>
+							- Quanitize (cluster) the source image, generate a clustered image with the assigned number of colors.<br>
+							- Iterate through each quanitized color, and overwrite them with order as R(1,0,0), G(0,1,0), or G(0,0,1).<br>
+							- Output one mask for every 3 colors iterated.
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Albedo to RGB Channel Mask Conversion GUI</b>
+						</h4>
+						<img src="images/AlbedoToRGBMaskConverterGUI.gif" width="700" height="400" margin-right: 150px; />
+						<p>Albedo to RGB Channel Mask Conversion GUI</p>
+						
+					</div>
+				</div>
+
+
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						
 						<h3 style="font-style: italic;">
 							<b>Quick Asset Check Blender Add-on</b>
 						</h3>
