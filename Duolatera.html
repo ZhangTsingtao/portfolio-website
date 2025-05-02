@@ -258,12 +258,16 @@
 							</h2>
 						</header>
 						<h4 style="font-style: italic;">
-							<b>PCG Decoration Stripe</b>
+							<b>Decoration Glyh Stripe</b>
 						</h4>
 						<p>
 							To save the time for our level designer to quickly decorate the level, I designed and implemented this PCG stripe.<br>
 							User only need to edit the control points of spline, and the stripe will be generated with on click.<br>
 							<br>
+							For the texture, I implemented a glyph layout material that randomly samples through a 5 x 5 glyph sheet, and output a glyph for each generated plane.<br>
+							<img src="images/GlyphSheet.png" width="300" height="300" margin-right: 150px; style="background-color:#475527;"/>
+						</p>
+						<p>
 							In addition, I implemented a auto snapping tool for spline control points. When getting close to surface, it automatically snaps to nearby surfaces with configured margin.<br>
 							Currently, auto snapping supports 1 face, 2 faces with inside and outside corner, and 3 faces.
 						</p>	
@@ -296,6 +300,43 @@
 						</div>
 						
 					</div>
+
+					<div class="col-6 col-12-medium">
+						
+						<h4 style="font-style: italic;">
+							<b>Spline loop Floor Tile</b>
+						</h4>
+						<p>
+							To further speed up the decoration process, I implemented a floor tile generator based on Unreal spline component using Unreal PCG Graph.<br>
+							<br>
+							The floor tile is generated on the spline loop's area, users can tweak the height difference and custom the meshes to generate along with their priorities.<br>
+							
+						</p>
+							
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Spline loop Floor Tile</b>
+						</h4>
+						<div class="row gtr-150">
+							<div class="col-8 col-12-medium imp-medium">
+								<img src="images/FloorTile.gif" width="400" height="300" margin-right: 150px; />
+								<p>
+									Floor Tile Generation
+								</p>
+								
+							</div>
+							<div class="col-4 col-12-medium imp-medium">
+								<img src="images/FloorTileSetting.png" width="400" height="300" margin-right: 150px; />
+								<p>
+									Customization panel
+								</p>
+							</div>
+						</div>
+						
+					</div>
+
+
 				</div>
 			</div>
 		</section>
