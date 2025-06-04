@@ -152,6 +152,41 @@
 							</h2>
 						</header>
 						<h3 style="font-style: italic;">
+							<b>Custom Asset Pipeline Importer</b>
+						</h3>
+						<p>
+							The importer automatically detects new assets from external directory, imports all associated files (mesh and textures), and creates a material instance inherited from our master material.<br>
+							<br>
+							Its process in details:<br>
+							1. Check if asset already exists in content browser, skip if it does<br>
+							2. Import every FBX file with its associate texture files (found by name)<br>
+							3. If FBX file is static mesh, check if it meets triangle count limit, if it exceeds the limit, delete and log warning<br>
+							4. If FBX file is static mesh, apply default LOD group to it<br>
+							5. Create a material instnace inherited from M_Cel<br>
+							6. Assign all associate textures to the material instance, setting other necessary parameters as well<br>
+							7. Apply the newly created material instance to the mesh (both static and skeletal mesh)<br>
+							8. Check out (Mark for add) imported files<br>
+							9. Print back all imported (and created) assets, along with their import status, and any import warnings<br>
+							<br>
+							The UI has two tabs, the first tab is configuration, including import and asset directories, and the master material from which the material instance is created.<br>
+							The second tab shows the import results of all attempted assets, and supports quick searching by filtering by import status
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<h4 style="font-style: italic;">
+							<b>Custom Asset Pipeline Importer</b>
+						</h4>
+						<iframe width="800" height="540" src="https://www.youtube.com/embed/x1G8WFMuZpM" frameborder="0" allowfullscreen></iframe>
+						
+						
+					</div>
+				</div>
+
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						
+						<h3 style="font-style: italic;">
 							<b>Albedo to RGB Channel Mask Conversion GUI</b>
 						</h3>
 						<p>
