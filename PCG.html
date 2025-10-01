@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<!--
+	Photon by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Tsingtao Zhang</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Header -->
+		<section id = "one" class="main style3" style="background-color: #ffffff;">
+			<div class="container"  >
+				<div class="row gtr-150" >
+					<div class="col-8 col-12-medium imp-medium" >
+						<a href= "index.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527";>About Me</font></a>
+						<a href= "Duolatera.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Duolatera</font></a>
+						<a href= "PCG.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Runtime Procedural Generation</font></a>
+						<a href= "Artwork.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Artwork</font></a>
+						<!-- <a href= "" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">VR Exercise Research</font></a> -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Header -->
+
+			<section id = "one" class="main style2" style="background-color: #475527;">
+				<div class="container" >
+					<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Runtime Procedural Generation</font></b></h1>
+					<h2 style="font-style: italic; text-align: center;">
+						A tech demo
+					</h2>
+
+					<div class="row gtr-150">
+						<div class="col-8 col-12-medium imp-medium">
+							<h3><b>Overview</b></h3>
+							<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
+								Developed both in Unity and Unreal, created a procedural wall generator at runtime based on splines. <br>
+                                The Unreal version was developed first, however, after closer code examination, some PCG features aren't supported in package build. Relunctantly, I gave up on this route.<br>
+                                The prototype was successfully built by Unity, and then optimized by moving generation logic from CPU to GPU using compute shaders.<br>
+                                This project is inspired by <a href="https://store.steampowered.com/app/2198150/Tiny_Glade/"> <u> Tiny Glade </u></a>
+
+							</p>
+							
+						</div>
+						<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+							<h3><b>Duration</b></h3>
+							<p>07/2025 - </p>
+
+							<h3><b>Tools</b></h3>
+							<p>Unity, C#, HLSL, Unreal</p>
+						</div>
+					</div>		
+				</div>
+				
+			</section>
+
+		<!-- One -->
+		<section id="one" class="main style1">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Shooter AI</b>
+							</h2>
+							
+						</header>
+						
+						<p>
+							To enrich the gameplay, I designed and implemented a shooter AI that calculates the projectile's parabola curve path based on real life physics.<br>
+							The AI computes the projectile's path based on its own location, the target's location, and the intended projectile speed.<br>
+							When the AI finds the path is blocked using ray marching, it adjusts its shooting angle and shooting speed to find an unblocked path.
+						</p>
+
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<iframe width="700" height="400" src="https://www.youtube.com/embed/yyx-8GHp3p8" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="main style2" style="background-color: #475527;">
+			<div class="container">
+
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Punch-back mechanism</b>
+							</h2>
+						</header>
+						
+						<p>
+							The player punches the projectiles back to make damage to shooter AIs, and gain score.
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						
+						<iframe width="700" height="400" src="https://www.youtube.com/embed/1hPCrIGDRAA" frameborder="0" allowfullscreen></iframe>
+						
+						
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<section id="footer">
+			<div class = "container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<p style = "text-align:left; margin: 0 0 0 0; font-size: 1.25em;" >
+							<b>Tsingtao Zhang</b> 
+						</p>	
+						<p style = "text-align:left;  margin: 0 0 0 0;" >
+							Technical Artist / Gameplay Programmer
+						</p>
+					</div>
+					<div class="col-6 col-12-medium">
+						Email: <a href="mailto: tsingzhang1@gmail.com"> tsingzhang1@gmail.com </a>
+						<br>Phone: 585-615-0628
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
