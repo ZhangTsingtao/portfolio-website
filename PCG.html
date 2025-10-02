@@ -20,7 +20,7 @@
 					<div class="col-8 col-12-medium imp-medium" >
 						<a href= "index.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527";>About Me</font></a>
 						<a href= "Duolatera.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Duolatera</font></a>
-						<!-- <a href= "PCG.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Runtime Procedural Generation</font></a> -->
+						<a href= "PCG.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Runtime Procedural Generation</font></a>
 						<a href= "Artwork.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Artwork</font></a>
 						<a href= "VRExercise.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">VR Exercise Research</font></a>
 					</div>
@@ -33,7 +33,7 @@
 				<div class="container" >
 					<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Runtime Procedural Generation</font></b></h1>
 					<h2 style="font-style: italic; text-align: center;">
-						A tech demo
+						Currently a tech demo
 					</h2>
 
 					<div class="row gtr-150">
@@ -41,11 +41,17 @@
 							<h3><b>Overview</b></h3>
 							<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
 								Developed both in Unity and Unreal, created a procedural wall generator at runtime based on splines. <br>
-                                The Unreal version was developed first, however, after closer code examination, some PCG features aren't supported in package build. Relunctantly, I gave up on this route.<br>
-                                The prototype was successfully built by Unity, and then optimized by moving generation logic from CPU to GPU using compute shaders.<br>
+								<br>
+                                The Unreal version was developed first, however, after deep engine source code examination, some PCG features aren't supported in package build. Relunctantly, I gave up on this route.<br>
+                                <br>
+								Then, the prototype was successfully built in Unity, and then optimized by moving generation logic from CPU to GPU using compute shaders.<br>
+								<br>
+								Currently, on a RTX4060 gaming laptop, the tech demo can have nearly 30K instances updating concurrently each frame, while still keeping framerate above 60 fps.<br>
+								<br>
                                 This project is inspired by <a href="https://store.steampowered.com/app/2198150/Tiny_Glade/"> <u> Tiny Glade </u></a>
 
 							</p>
+							<img src="images/PCG/UnityGPU.gif" width="700" height="400">
 							
 						</div>
 						<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
@@ -67,21 +73,30 @@
 					<div class="col-6 col-12-medium">
 						<header class="major">
 							<h2>
-								<b>Shooter AI</b>
+								<b>First attempt: PCG Graph in Unreal 5.6</b>
 							</h2>
 							
 						</header>
-						
 						<p>
-							To enrich the gameplay, I designed and implemented a shooter AI that calculates the projectile's parabola curve path based on real life physics.<br>
-							The AI computes the projectile's path based on its own location, the target's location, and the intended projectile speed.<br>
-							When the AI finds the path is blocked using ray marching, it adjusts its shooting angle and shooting speed to find an unblocked path.
+							As PCG Graph has already laid out the system, plus the better visual aesthetics in Unreal, it's a no-brainer to first try this idea in Unreal.<br>
+							<br>
+							The working prototype was quickly developed, however, everything works fine, except for the packaged built...<br>
+							After a deep digging in the engine's source code, I found out that some features supporting "Generate On Demand" is only available in the Editor. <br>
+							I tried bypassing the editor check, but this feature required more than a boolean, but some other features only existing in the Editor instance.<br>
+							Relunctantly, I had to give up this route.
 						</p>
 
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe width="700" height="400" src="https://www.youtube.com/embed/yyx-8GHp3p8" frameborder="0" allowfullscreen></iframe>
+						<img src="images/PCG/UnrealPCGFenceDemo.gif" width="600" height="400">
+						<p>
+							^ Looks good in the editor, but "Generate On Demand" becomes unavailable in packaged build.
+						</p>
+						<img src="images/PCG/PCGSplineInEditor.gif" width="600" height="400">
+						<p>
+							^ Debugging the feature in the packaged build, even with some tweaks, the runtime PCG doesn't produces smooth transition
+						</p>
 					</div>
 				</div>
 			</div>
@@ -95,23 +110,53 @@
 					<div class="col-6 col-12-medium">
 						<header class="major">
 							<h2>
-								<b>Punch-back mechanism</b>
+								<b>Second Attempt: handcraft PCG on spline in Unity, CPU heavy</b>
 							</h2>
 						</header>
 						
 						<p>
-							The player punches the projectiles back to make damage to shooter AIs, and gain score.
+							Based on Unity's spline API, I developed a mesh generator along the spline.<br>
+							The transform matrices for each instance are calculated in CPU. To add more dynamics, the length of each instance are randomized.<br>
+							For in-game interaction, the collider mesh is also generated at each update.<br>
+							This approach works smoothly when the scene is updating below 1K instances, but the CPU overhead becomes crucial with more instances.
 						</p>
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
 						
-						<iframe width="700" height="400" src="https://www.youtube.com/embed/1hPCrIGDRAA" frameborder="0" allowfullscreen></iframe>
+						<img src="images/PCG/UnityCPU.gif" width="600" height="400">
 						
 						
 					</div>
 				</div>
 
+			</div>
+		</section>
+
+		<!-- Three -->
+		<section id="one" class="main style1">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Third Attempt: calculations in compute shader, GPU heavy</b>
+							</h2>
+							
+						</header>
+						<p>
+							Calculating the transform of each instance is a huge batch of parallel calculations, which is ideal for GPU to handle. <br>
+							Using compute shader, I can arrange each instance's position on the spline based on their DispatchThreadID, the calculated transforms are stored in a compute buffer, which can be directly referenced by vertex shader. <b>Therefore, calculations and reading data all happens in GPU.</b><br>
+							I implemented my own version of spline library in HLSL, to get everything aligned with CPU version.<br>
+							Currently, this version is still work in progress, features like randomized lengths and correcting shading are on the agenda.<br>
+						</p>
+
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<img src="images/PCG/UnityGPU.gif" width="600" height="400">
+					</div>
+				</div>
 			</div>
 		</section>
 
