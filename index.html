@@ -16,56 +16,43 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-		<!-- Header -->
-		
-		<section id = "one" class="main style3" style="background-color: #ffffff;">
-			<div class="container"  >
-				<div class="row gtr-150" >
-					<div class="col-8 col-12-medium imp-medium" >
-						<a href= "index.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527";>About Me</font></a>
-						<a href= "Duolatera.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Duolatera</font></a>
-						<a href= "PCG.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Runtime Procedural Generation</font></a>
-						<a href= "Artwork.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Artwork</font></a>
-						<a href= "VRExercise.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">VR Exercise Research</font></a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Header -->
-			<section id = "one" class="main style3" style="background-color: #475527;">
-
+		<div id="site-header"></div>
+		<script src="assets/js/header.js"></script>
+			
+		<section class="main style3" style="background-color: #E0DAB8;">
 				<div class="container" >
-					<h1 style="text-align: left; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Tsingtao Zhang</font></b></h1>
+					<h1 style="text-align: left; margin-left: 0%; font-size:45px"> <b>Tsingtao Zhang</b></h1>
 					<div class="row gtr-150">
 						<div class="col-8 col-12-medium imp-medium">
 							<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
-								<font color="FFFFFF">
-								Hi, I'm Tsingtao, a technical artist. I graduated from
-								<a href="https://www.rit.edu/study/game-design-and-development-ms"> <u> Rochester Institute of Technology</u></a> with Master degree of Game Design and Development On August, 2025.
-								<br>
-								I focus on pipeline & tools development, procedural content generation, and graphics programming. I have extensive experience in with both Unity and Unreal Engine, and VR game development for Meta Quest. Meanwhile, I'm also a 3D environmental artist.
-								<br>
-								My projects include a game as capstone project, GPU raytracer, some of my work samples and artwork.
+								<font color="#000000">
+
+								Hello, I'm Tsingtao Zhang, a Technical Artist and Graphics Programmer specializing in procedural generation, shader development, and art pipeline design. With a Master's in Game Design and Development from <a href="https://www.rit.edu/study/game-design-and-development-ms">Rochester Institute of Technology</a>. I work at the boundary of art and engineering — building systems that are both visually expressive and technically efficient.
 								<br>
 								
+								<br>
+								My recent work includes leading a real-time procedural tower defense game at Snowcake Studio, where all geometry is generated at runtime in Unity via HLSL. Prior to that, my award-winning VR capstone Duolatera had me designing asset pipelines, training external artists, and building Python automation tools — all within Unreal 5.
+								<br>
+								<br>
 								In my life, I'm a bass in choir, a good cook, and a hardcore racing gamer. I once built a steering wheel from motor and PBC boards.
-								</font>
+								
+							</font>
+								
 							</p>
 							<p>
-								<font color="FFFFFF">
+								<font color="#475527">
 								Email: <a href="mailto: tsingzhang1@gmail.com"> tsingzhang1@gmail.com </a><br>
-								Phone: 585-615-0628
 								</font>
 							</p>
 							<div class="row gtr-150">
 								<form action="Tsingtao_Zhang_Resume.pdf" target="_blank">
-									<button style="border: #ffffff;" type="submit"><p><font color="FFFFFF">Resume</font></p></button>
+									<button style="border: #475527;" type="submit"><p><font color="#475527">Resume</font></p></button>
 								</form>
 								<form action="https://www.linkedin.com/in/tsingtao-zhang-0b7975290/" target="_blank">
-									<button style="border: #ffffff;"><p><font color="FFFFFF">LinkedIn</font></p></button>
+									<button style="border: #475527;"><p><font color="#475527">LinkedIn</font></p></button>
 								</form>
 								<form action="https://github.com/ZhangTsingtao" target="_blank">
-									<button style="border: #ffffff;"><p><font color="FFFFFF">GitHub</font></p></button>
+									<button style="border: #475527;"><p><font color="#475527">GitHub</font></p></button>
 								</form>
 								
 							</div>
@@ -78,12 +65,48 @@
 			</section>
 		
 		
-		
+		<!-- Runtime Procedural Generation -->
+		<section class="main style4">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<header class="major">
+							<h2>
+								<b>Runtime Procedural Generation</b>
+							</h2>
+							<h3 style="font-style: italic;">
+								A tech demo of runtime generation game
+							</h3>
+						</header>
+						<p style="color: #f0ece0; font-weight: 400; font-size: 1em;">
+							Technical Artist | 3 mo | solo project
+						</p>
+						<p style="margin-bottom: 0.5em;">
+							This is a tech demo of a runtime procedural generation game, developed and tested on both Unreal and Unity, leveraging each of their own strengths.
+						</p>	
+						<p style="margin-bottom: 0.5em;">
+							I utlized compute shader to calculate the transform for each instance, and the vertex shader takes data directly from GPU. <b>Therefore no CPU is involved in runtime procedural generation.</b>
+						</p>
+						<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-left: 30%;">
+							<p>
+								<form action="PCG.html" target="_self">
+									<button style="border: #475527"><a>Details</a></button>
+								</form>	
+							</p>
+						</div>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<iframe class="medium" src="https://www.youtube.com/embed/l77ZW5ApErc" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
 		
 		
 		
 		<!-- Duolatera  -->
-		<section id="one" class="main style1">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -95,7 +118,7 @@
 								An online VR 2-player co-op puzzle game. 
 							</h3>
 						</header>
-						<p style="color: #555555; font-weight: 400; font-size: 1em;">
+						<p style="color: #f0ece0; font-weight: 400; font-size: 1em;">
 							Technical Artist & Gameplay Programmer | 7 mo | 5-people project 
 						</p>
 						<p style="margin-bottom: 0.5em;">
@@ -117,52 +140,16 @@
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe width="540" height="540" src="https://www.youtube.com/embed/I1gRbKmDvMs" frameborder="0" allowfullscreen></iframe>
+						<iframe class="medium" src="https://www.youtube.com/embed/I1gRbKmDvMs" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Runtime Procedural Generation -->
-		<section id="two" class="main style2" style="background-color: #475527">
-			<div class="container">
-				<div class="row gtr-150">
-					<div class="col-6 col-12-medium">
-						<header class="major">
-							<h2>
-								<b>Runtime Procedural Generation</b>
-							</h2>
-							<h3 style="font-style: italic;">
-								A tech demo of runtime generation game
-							</h3>
-						</header>
-						<p style="color: #cfcfcf; font-weight: 400; font-size: 1em;">
-							Technical Artist | 3 mo | solo project
-						</p>
-						<p style="margin-bottom: 0.5em;">
-							This is a tech demo of a runtime procedural generation game, developed and tested on both Unreal and Unity, leveraging each of their own strengths.
-						</p>	
-						<p style="margin-bottom: 0.5em;">
-							I utlized compute shader to calculate the transform for each instance, and the vertex shader takes data directly from GPU. <b>Therefore no CPU is involved in runtime procedural generation.</b>
-						</p>
-						<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-left: 30%;">
-							<p>
-								<form action="PCG.html" target="_self">
-									<button style="border: #475527"><a>Demo</a></button>
-								</form>	
-							</p>
-						</div>
-						
-					</div>
-					<div class="col-6 col-12-medium imp-medium">
-						<iframe width="540" height="540" src="https://www.youtube.com/embed/l77ZW5ApErc" frameborder="0" allowfullscreen></iframe>
-					</div>
-				</div>
-			</div>
-		</section>
+		
 
 		<!-- Three -->
-		<section id="five" class="main style1">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -198,7 +185,7 @@
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe width="540" height="480" src="https://www.youtube.com/embed/W9eJc4IQYOo" frameborder="0" allowfullscreen></iframe>
+						<iframe class="medium" src="https://www.youtube.com/embed/W9eJc4IQYOo" frameborder="0" allowfullscreen></iframe>
 					</div>
 					
 				</div>
@@ -206,7 +193,7 @@
 		</section>
 
 		<!-- Ocean Simulator -->
-		<section id="two" class="main style2" style="background-color: #475527">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -218,7 +205,7 @@
 								A GLSL shader.
 							</h3>
 						</header>
-						<p style="color: #cfcfcf; font-weight: 400; font-size: 1em;">
+						<p style="color: #f0ece0; font-weight: 400; font-size: 1em;">
 							Graphics Programmer | 3 mo | 2-person project
 						</p>
 						<p style="margin-bottom: 0.5em;">
@@ -238,7 +225,7 @@
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe width="540" height="540" src="https://www.youtube.com/embed/mi3qrnqoHJg" frameborder="0" allowfullscreen></iframe>
+						<iframe class="medium" src="https://www.youtube.com/embed/mi3qrnqoHJg" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
 			</div>
@@ -247,7 +234,7 @@
 		
 
 		<!-- Four -->
-		<section id="four" class="main style1">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -285,7 +272,7 @@
 		</section>
 		
 		<!-- Four -->
-		<section id="three" class="main style2" style="background-color: #475527">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -297,7 +284,7 @@
 								A research on user's exercise intensity
 							</h3>
 						</header>
-						<p style="color: #cfcfcf; font-weight: 400; font-size: 1em;">
+						<p style="color: #f0ece0; font-weight: 400; font-size: 1em;">
 							Gameplay Programmer | 3 mo | group research project
 						</p>
 						<p style="margin-bottom: 0.5em;">
@@ -318,31 +305,14 @@
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe width="540" height="480" src="https://www.youtube.com/embed/lrXbuuZ4GpU" frameborder="0" allowfullscreen></iframe>
+						<iframe class="medium" src="https://www.youtube.com/embed/lrXbuuZ4GpU" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
 			</div>
 		</section>
 
 			<!-- Footer -->
-			<section id="footer">
-				<div class = "container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<p style = "text-align:left; margin: 0 0 0 0; font-size: 1.25em;" >
-								<b>Tsingtao Zhang</b> 
-							</p>	
-							<p style = "text-align:left;  margin: 0 0 0 0;" >
-								Technical Artist / Gameplay Programmer
-							</p>
-						</div>
-						<div class="col-6 col-12-medium">
-							Email: <a href="mailto: tsingzhang1@gmail.com"> tsingzhang1@gmail.com </a>
-							<br>Phone: 585-615-0628
-						</div>
-					</div>
-				</div>
-			</section>
+			<div id="site-footer"></div>
 
 			<!-- Scripts -->
 				<script src="assets/js/jquery.min.js"></script>
@@ -351,6 +321,7 @@
 				<script src="assets/js/breakpoints.min.js"></script>
 				<script src="assets/js/util.js"></script>
 				<script src="assets/js/main.js"></script>
+			<script src="assets/js/footer.js"></script>
 
 		</body>
 	</html>

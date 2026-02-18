@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(node -e:*)",
+      "Bash(powershell -Command \"Get-Content -Path ''c:\\\\Users\\\\Tsing\\\\Documents\\\\GitHub\\\\portfolio-website\\\\assets\\\\css\\\\main.css'' -TotalCount 2402 | Select-Object -Last 10 | ForEach-Object { [System.Text.Encoding]::UTF8.GetBytes\\($_ -join '','' }\")",
+      "Bash(node:*)",
+      "Bash(python:*)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Tsing\\Documents\\GitHub\\portfolio-website\\assets\\css"
+    ]
+  }
+}

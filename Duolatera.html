@@ -13,23 +13,10 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-		<!-- Header -->
-		<section id = "one" class="main style3" style="background-color: #ffffff;">
-			<div class="container"  >
-				<div class="row gtr-150" >
-					<div class="col-8 col-12-medium imp-medium" >
-						<a href= "index.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527";>About Me</font></a>
-						<a href= "Duolatera.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Duolatera</font></a>
-						<a href= "PCG.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Runtime Procedural Generation</font></a>
-						<a href= "Artwork.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">Artwork</font></a>
-						<a href= "VRExercise.html" style="text-align: right; margin-right: 5%; font-size:30px" target="_self"><font color="#475527">VR Exercise Research</font></a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Header -->
+		<div id="site-header"></div>
+		<script src="assets/js/header.js"></script>
 
-			<section id = "one" class="main style2" style="background-color: #475527;">
+			<section class="main style4">
 				<div class="container" >
 					<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Duolatera</font></b></h1>
 					<h2 style="font-style: italic; text-align: center;">
@@ -64,12 +51,12 @@
 					</div>		
 				</div>
 				<p align="center">
-					<iframe width="960" height="540" src="https://www.youtube.com/embed/I1gRbKmDvMs" frameborder="0" allowfullscreen></iframe>
+					<iframe class="large" src="https://www.youtube.com/embed/I1gRbKmDvMs" frameborder="0" allowfullscreen></iframe>
 				</p>	
 			</section>
 
 		<!-- One -->
-		<section id="one" class="main style1">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -116,28 +103,28 @@
 						</p>
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<img src="images/LaserToolUVMap.png" width="600" height="300" margin-right: 150px; />
+						<img src="images/LaserToolUVMap.png" class="medium" />
 						<p>UV map</p>
-						<img src="images/LaserToolMasks.png" width="800" height="250" margin-right: 150px; />
+						<img src="images/LaserToolMasks.png" class="large" />
 						<p>RGB Channel Mask x3</p>
 
 						<div class="row gtr-150">
 							<div class="col-9 col-12-medium imp-medium">
-								<img src="images/LaserToolWithMask.png" width="500" height="250" margin-right: 150px; />
+								<img src="images/LaserToolWithMask.png" class="medium" />
 								<p>
 									^ Applied with all RGB Channel Masks<br>
 									> Assign desired color to each channel mask
 								</p>
 							</div>
 							<div class="col-3 col-12-medium imp-medium">
-								<img src="images/MISettings.png" width="300" height="400" margin-right: 150px; />
+								<img src="images/MISettings.png" class="small" />
 							</div>
 						</div>
-						<img src="images/LaserToolVariants.png" width="800" height="200" margin-right: 150px; />
+						<img src="images/LaserToolVariants.png" class="large" />
 						<p>Easily created variants</p>
 
-						<img src="images/Button.png" width="200" height="300" />
-						<img src="images/RingSensor.png" width="200" height="300" />
+						<img src="images/Button.png" class="small" />
+						<img src="images/RingSensor.png" class="small" />
 						<p>Other assets with custom shader</p>
 					</div>
 				</div>
@@ -145,7 +132,7 @@
 		</section>
 
 		<!-- Two -->
-		<section id="two" class="main style2" style="background-color: #475527;">
+		<section class="main style4">
 			<div class="container">
 
 				<div class="row gtr-150">
@@ -181,7 +168,7 @@
 						<h4 style="font-style: italic;">
 							<b>Custom Asset Pipeline Importer</b>
 						</h4>
-						<iframe width="800" height="540" src="https://www.youtube.com/embed/x1G8WFMuZpM" frameborder="0" allowfullscreen></iframe>
+						<iframe class="large" src="https://www.youtube.com/embed/x1G8WFMuZpM" frameborder="0" allowfullscreen></iframe>
 						
 						
 					</div>
@@ -210,7 +197,7 @@
 						<h4 style="font-style: italic;">
 							<b>Albedo to RGB Channel Mask Conversion GUI</b>
 						</h4>
-						<img src="images/AlbedoToRGBMaskConverterGUI.gif" width="700" height="400" margin-right: 150px; />
+						<img src="images/AlbedoToRGBMaskConverterGUI.gif" class="medium" />
 						<p>Albedo to RGB Channel Mask Conversion GUI</p>
 						
 					</div>
@@ -237,7 +224,7 @@
 						<h4 style="font-style: italic;">
 							<b>Renaming Tool</b>
 						</h4>
-						<img src="images/RenamingTool.gif" width="700" height="400" margin-right: 150px; />
+						<img src="images/RenamingTool.gif" class="medium" />
 						<p>Renaming Tool</p>
 						
 					</div>
@@ -267,7 +254,7 @@
 						<h4 style="font-style: italic;">
 							<b>Quick Asset Check Blender Add-on</b>
 						</h4>
-						<img src="images/QuickCheck.gif" width="800" height="400" margin-right: 150px; />
+						<img src="images/QuickCheck.gif" class="large" />
 						<p>Quick Asset Check Demo</p>
 						
 					</div>
@@ -305,7 +292,7 @@
 						<h4 style="font-style: italic;">
 							<b>Unreal PCG to Static Mesh Converter</b>
 						</h4>
-						<img src="images/PCGSelectReplaceDemo.gif" width="800" height="400" margin-right: 150px; />
+						<img src="images/PCGSelectReplaceDemo.gif" class="large" />
 						
 						
 					</div>
@@ -314,7 +301,7 @@
 		</section>
 
 		<!-- Three -->
-		<section id="Artwork" class="main style1">
+		<section class="main style4">
 			<div class="container">
 				<header class="major">
 					<h2>
@@ -334,10 +321,10 @@
 						</p>
 						
 						<div class="col-6 col-12-medium">
-							<img src="images/DistortedRing.gif" width="200" height="200" margin-right: 150px; />
-							<img src="images/Fireball.gif" width="200" height="200" margin-right: 150px; />
-							<img src="images/BurstRing.gif" width="200" height="200" margin-right: 150px; />
-							<img src="images/LightningBall.gif" width="200" height="200" margin-right: 150px; />				
+							<img src="images/DistortedRing.gif" class="small" />
+							<img src="images/Fireball.gif" class="small" />
+							<img src="images/BurstRing.gif" class="small" />
+							<img src="images/LightningBall.gif" class="small" />				
 						</div>
 
 					</div>
@@ -346,8 +333,8 @@
 						
 						<div class="row gtr-150">
 							<div class="col-8 col-12-medium imp-medium">
-								<iframe width="600" height="300" src="https://www.youtube.com/embed/rJp_C_lXEWo" frameborder="0" allowfullscreen></iframe>
-								<iframe width="600" height="300" src="https://www.youtube.com/embed/DjKYQkvN63Y" frameborder="0" allowfullscreen></iframe>
+								<iframe class="medium" src="https://www.youtube.com/embed/rJp_C_lXEWo" frameborder="0" allowfullscreen></iframe>
+								<iframe class="medium" src="https://www.youtube.com/embed/DjKYQkvN63Y" frameborder="0" allowfullscreen></iframe>
 							</div>
 							
 						</div>
@@ -364,7 +351,7 @@
 							User only need to edit the control points of spline, and the stripe will be generated with on click.<br>
 							<br>
 							For the texture, I implemented a glyph layout material that randomly samples through a 5 x 5 glyph sheet, and output a glyph for each generated plane.<br>
-							<img src="images/GlyphSheet.png" width="300" height="300" margin-right: 150px; style="background-color:#475527;"/>
+							<img src="images/GlyphSheet.png" class="small" style="background-color:#475527;"/>
 						</p>
 						<p>
 							In addition, I implemented a auto snapping tool for spline control points. When getting close to surface, it automatically snaps to nearby surfaces with configured margin.<br>
@@ -377,21 +364,21 @@
 						</h4>
 						<div class="row gtr-150">
 							<div class="col-8 col-12-medium imp-medium">
-								<img src="images/PCGStripe0.gif" width="400" height="300" margin-right: 150px; />
+								<img src="images/PCGStripe0.gif" class="medium" />
 								<p>
 									Generate textures
 								</p>
-								<img src="images/PCGStripe2.gif" width="400" height="300" margin-right: 150px; />
+								<img src="images/PCGStripe2.gif" class="medium" />
 								<p>
 									Outside corner
 								</p>
 							</div>
 							<div class="col-4 col-12-medium imp-medium">
-								<img src="images/PCGStripe1.gif" width="400" height="300" margin-right: 150px; />
+								<img src="images/PCGStripe1.gif" class="medium" />
 								<p>
 									Inside corner
 								</p>
-								<img src="images/PCGStripe3.gif" width="400" height="300" margin-right: 150px; />
+								<img src="images/PCGStripe3.gif" class="medium" />
 								<p>
 									3 faces
 								</p>
@@ -419,14 +406,14 @@
 						</h4>
 						<div class="row gtr-150">
 							<div class="col-8 col-12-medium imp-medium">
-								<img src="images/FloorTile.gif" width="400" height="300" margin-right: 150px; />
+								<img src="images/FloorTile.gif" class="medium" />
 								<p>
 									Floor Tile Generation
 								</p>
 								
 							</div>
 							<div class="col-4 col-12-medium imp-medium">
-								<img src="images/FloorTileSetting.png" width="400" height="300" margin-right: 150px; />
+								<img src="images/FloorTileSetting.png" class="medium" />
 								<p>
 									Customization panel
 								</p>
@@ -443,7 +430,7 @@
 		</section>
 
 		<!-- Four -->
-		<section id="four" class="main style2" style="background-color: #475527;">
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -474,7 +461,7 @@
 						</h4>
 						<div class="row gtr-150">
 							<div class="col-8 col-12-medium imp-medium">
-								<img src="images/motionpredict.gif" width="800" height="600" margin-right: 150px; />
+								<img src="images/motionpredict.gif" class="large" />
 							</div>
 						</div>
 						
@@ -485,7 +472,7 @@
 
 
 		<!-- Five -->
-		<section id="four" class="main style1" >
+		<section class="main style4">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
@@ -517,8 +504,8 @@
 						
 						<div class="row gtr-150">
 							<div class="col-8 col-12-medium imp-medium">
-								<img src="images/GrabInteract.gif" width="700" height="750" margin-right: 150px; />
-								<img src="images/TriggerGate.gif" width="700" height="750" margin-right: 150px; />
+								<img src="images/GrabInteract.gif" class="medium" />
+								<img src="images/TriggerGate.gif" class="medium" />
 								
 							</div>
 						</div>
@@ -527,65 +514,7 @@
 				</div>
 			</div>
 		</section>
-
-		<!-- Six -->
-		<section id="four" class="main style2" style="background-color: #475527;">
-			<div class="container">
-				<div class="row gtr-150">
-					<div class="col-6 col-12-medium">
-						<header class="major">
-							<h2>
-								<b>AI Supported Assets</b>
-							</h2>
-						</header>
-						
-						<p>
-							Utilizing Stable Diffusion and Meshy, we could fill in the assets that couldn't be made in time.<br>
-							During the development, we were mainly using generated meshes for decoration purpose.<br>
-							<br>
-						</p>
-						<img src="images/AIAsset5.png" width="500" height="500" />
-						
-						
-						
-					</div>
-					<div class="col-6 col-12-medium imp-medium">
-						
-						<div class="row gtr-150">
-							<div class="col-8 col-12-medium imp-medium">
-								<img src="images/AIAsset1.png" width="500" height="400" />
-								<img src="images/AIAsset2.png" width="500" height="250" />
-								<img src="images/AIAsset3.png" width="500" height="300" />
-								<img src="images/AIAsset4.png" width="500" height="400" />
-
-								
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Footer -->
-		<section id="footer">
-			<div class = "container">
-				<div class="row gtr-150">
-					<div class="col-6 col-12-medium">
-						<p style = "text-align:left; margin: 0 0 0 0; font-size: 1.25em;" >
-							<b>Tsingtao Zhang</b> 
-						</p>	
-						<p style = "text-align:left;  margin: 0 0 0 0;" >
-							Technical Artist / Gameplay Programmer
-						</p>
-					</div>
-					<div class="col-6 col-12-medium">
-						Email: <a href="mailto: tsingzhang1@gmail.com"> tsingzhang1@gmail.com </a>
-						<br>Phone: 585-615-0628
-					</div>
-				</div>
-			</div>
-		</section>
+	<div id="site-footer"></div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -594,6 +523,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+		<script src="assets/js/footer.js"></script>
 
 	</body>
 </html>
