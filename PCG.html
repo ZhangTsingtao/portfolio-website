@@ -11,12 +11,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
 	</head>
 	<body class="is-preload">
 		<div id="site-header"></div>
 		<script src="assets/js/header.js"></script>
 
-			<section class="main style4">
+			<section class="main style4" id="overview">
 				<div class="container" >
 					<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Runtime Procedural Generation</font></b></h1>
 					<h2 style="font-style: italic; text-align: center;">
@@ -27,68 +30,80 @@
 						<div class="col-8 col-12-medium imp-medium">
 							<h3><b>Overview</b></h3>
 							<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
-								Starting off as a tech demo, it has become an ongoing part time project with my friends. I'm leading the development of the core feature: <b>procedurally generated buildings, interactable in realtime</b>.
+								Starting off as a tech demo, it has grown into an ongoing part time project with my friends. Currently, I'm leading the development of the core feature: <b>procedurally generated buildings, interactable in realtime</b>.
 								<br> 
 								<br>
 								The realtime PCG pipeline: 
-								<br>
-								<br>
+								<hr>
 								Building data managed in CPU <br>(Bezier splines, Oriented bounding boxes, and analytical shapes)
 								<br><br>
-								↓ pass to GPU buffers<br>
+								&emsp; ↓ &emsp; Pass to GPU buffers<br>
 								<br>
 								Compute shaders generate transforms for each brick mesh<br>
 								<br>
-								↓ Append transforms to a buffer<br>
+								&emsp; ↓ &emsp; Append transforms to a buffer<br>
 								<br>
 								Cull unseeable brick meshes (visible and shadows)<br>
 								<br>
-								↓ <br>
+								&emsp; ↓ <br>
 								<br>
 								Draw all remaining meshes using RenderMeshIndirect API
+								<hr>
 							</p>
-							<iframe class="medium" src="https://www.youtube.com/embed/DjHhNw78uR8" frameborder="0" allowfullscreen></iframe>
-
+							
 							
 						</div>
 						<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
 							<h3><b>Duration</b></h3>
-							<p>07/2025 - </p>
+							<p>07/2025 - now</p>
 
 							<h3><b>Tools</b></h3>
 							<p>Unity, URP, C#, HLSL, Unreal</p>
+							<p>
+								<b>In this page:</b><br>
+								<a href="PCG.html#journey">#Trial and error</a><br>
+								<a href="PCG.html#PCG">#Realtime procedural generation</a><br>
+								<a href="PCG.html#Culling">#Rendering optimization</a><br>
+								<a href="PCG.html#Aesthetic">#Aesthetic</a><br>
+								<a href="PCG.html#tooling">#Editor Tool</a>
+							</p>
+							
+
 						</div>
+						<iframe class="large" src="https://www.youtube.com/embed/DjHhNw78uR8" frameborder="0" allowfullscreen></iframe>
+
 					</div>		
 				</div>
 				
 			</section>
 
-		<!-- One -->
-		<section class="main style4">
+		<section class="main style4" id="journey">
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
 						<header class="major">
 							<h2>
-								<b>First attempt: PCG Graph in Unreal 5.6</b>
+								<b>Trial and error</b>
 							</h2>
-							
 						</header>
+						<h3><b>First attempt: Houdini or Unreal PCG Graph, just won't work in packaged builds :(</b></h3>
 						<p>
-							As PCG Graph has already laid out the system, plus the better visual aesthetics in Unreal, it's a no-brainer to first try this idea in Unreal.<br>
+							I quickly tried and eliminated Houdini + Unreal, while it's great for offline procedural assets, I didn't find a way to hook it up to real time generaion in editor, let alone a packaged build.<br>
 							<br>
-							The working prototype was quickly developed, however, everything works fine, except for the packaged built...<br>
-							After a deep digging in the engine's source code, I found out that some features supporting "Generate On Demand" is only available in the Editor. <br>
-							I tried bypassing the editor check, but this feature required more than a boolean, but some other features only existing in the Editor instance.<br>
+							Second try: Unreal PCG Graph. It has already laid out the system, plus the better visual in Unreal, it's a no-brainer to try this idea.<br>
+							<br>
+							A working prototype was quickly developed, everything worked fine, except for the packaged build...<br>
+							<br>
+							After digging deep in the engine's source code, I found out that some features supporting "Generate On Demand" node is only available in the Editor. <br>
+							I tried bypassing the editor check with no success, I suspect some other features this node uses only exist in the Editor instance.<br>
+							<br>
 							Relunctantly, I had to give up this route.
 						</p>
-
-						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
 						<img src="images/PCG/UnrealPCGFenceDemo.gif" class="medium">
 						<p>
-							^ Looks good in the editor, but "Generate On Demand" becomes unavailable in packaged build.
+							^ Looks good in editor, but not anymore in the packaged build.
 						</p>
 						<img src="images/PCG/PCGSplineInEditor.gif" class="medium">
 						<p>
@@ -97,24 +112,18 @@
 					</div>
 				</div>
 			</div>
-		</section>
-
-		<!-- Two -->
-		<section class="main style4">
+			
+			<hr>
+			
 			<div class="container">
-
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
-						<header class="major">
-							<h2>
-								<b>Second Attempt: handcraft PCG on spline in Unity, CPU heavy</b>
-							</h2>
-						</header>
-						
+						<h3><b>Second attempt: handcraft PCG on spline in Unity, CPU heavy, hit performance bottleneck :(</b></h3>
 						<p>
-							Based on Unity's spline API, I developed a mesh generator along the spline.<br>
+							Switching to Unity. Based on Unity's spline API, I developed a mesh generator along the spline.<br>
 							The transform matrices for each instance are calculated in CPU. To add more dynamics, the length of each instance are randomized.<br>
 							For in-game interaction, the collider mesh is also generated at each update.<br>
+							<br>
 							This approach works smoothly when the scene is updating below 1K instances, but the CPU overhead becomes crucial with more instances.
 						</p>
 						
@@ -122,62 +131,304 @@
 					<div class="col-6 col-12-medium imp-medium">
 						
 						<img src="images/PCG/UnityCPU.gif" class="medium">
-						
+						<p>
+							^ Works well with low instance count, but quickly lags as instance count goes over 1K
+						</p>
 						
 					</div>
 				</div>
-
 			</div>
-		</section>
-
-		<!-- Three -->
-		<section class="main style4">
+			
+			<hr>
+			
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
-						<header class="major">
-							<h2>
-								<b>Third Attempt: calculations in compute shader, GPU heavy</b>
-							</h2>
-							
-						</header>
+
+						<h3><b>Third attempt: calculations in compute shader, GPU heavy, a working prototype :D</b></h3>
 						<p>
 							Calculating the transform of each instance is a huge batch of parallel calculations, which is ideal for GPU to handle. <br>
-							Using compute shader, I can arrange each instance's position on the spline based on their DispatchThreadID, the calculated transforms are stored in a compute buffer, which can be directly referenced by vertex shader. <b>Therefore, calculations and reading data all happens in GPU.</b><br>
+							<br>
+							Using compute shader, I arranged each instance's transform on the spline based on their DispatchThreadID, the calculated transforms are stored in a compute buffer, which is directly referenced by vertex shader. <b>Therefore, calculations and reading data all happens in GPU.</b><br>
+							<br>
 							I implemented my own version of spline library in HLSL, to get everything aligned with CPU version.<br>
-							Currently, this version is still work in progress, features like randomized lengths and correcting shading are on the agenda.<br>
+							<br>
+							This version proved to be the right approach of realtime procedural generation. I have been working on this approch since then.<br>
+							Check out the features I've implemented along this route below!<br>
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<iframe class="medium" src="https://www.youtube.com/embed/l77ZW5ApErc" frameborder="0" allowfullscreen></iframe>
+						<p>
+							^ The first version of GPU generation
+						</p>
+					</div>
+				</div>
+			</div>
+		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
+		</section>
+
+
+		
+		
+		<section class="main style4" id="PCG">
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-12 col-12-medium">
+						<header>
+						<h2><b>Realtime procedural generation </b></h2>
+						</header>
+						<p>
+							Currently, the buildings are in two categories: walls and houses. <br>
+							An arbitrary amount of windows can be added to the buildins, cutting through the body. 
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<hr>
+			
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h3><b>Spline based thick wall</b></h3>
+						<p>
+							Implementing spline library in HLSL, I gained full control over each brick's transform along the spline. <br>
+							My transform struct is:
+						</p>
+						
+						<pre><code class="language-hlsl">
+struct TransformCS
+{
+    half3 position; 
+    half4 quaternion;
+    half4 scale;
+	
+    half pcgParam; 
+    // 16 bit var used for any other rendering data
+    // more detail in section <a href="PCG.html#Aesthetic">#Aesthetic</a>
+};
+</code></pre>
+						<p>
+							Initially, each thread of the compute shader generated all bricks in one row of a bezier curve. However, players might drag out an extra long curve, which added way more instances than other curves, slowing down the corresponding threads, introducing unbalanced parallel computing.<br>
+							<br>
+							To fix this problem, I divided each bezier curve into chunks, <b>each thread only handles a chunk instead of an entire curve</b>, so all threads handle generally the same amount of instances.<br>
+							<br>
+							Another problem is gathering the curve length using arc length parameterization. For a wall with thickness, it's impractical to calculate the u-distance look up table for every offset spline. Instead of passing cached u-distance look up table, I simply run a prepass in the compute shader to accumulate the length of its curve chunk, and reuse the result for the later steps.<br>
 						</p>
 
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe class="medium" src="https://www.youtube.com/embed/l77ZW5ApErc" frameborder="0" allowfullscreen></iframe>
+						<iframe class="medium" src="https://www.youtube.com/embed/vK1DqZv48X4" frameborder="0" allowfullscreen></iframe>
+						<p>
+							^ Building and editing a wall freely in realtime
+						</p>
+						<img src="images/PCG/SplineSamplingMethods.jpg" class="medium">
+						<p>
+							^ <br>
+							In the naive approach, each thread generates all bricks of a bezier curve (per row). Uneven curve lengths makes a few threads take significant longer time to finish.<br>
+							<br>
+							In the optimized approach, each thread only hanles a curve chunk, all chunks' length don't exceed a certain amount. Therefore all threads' execution times are guaranteed within a limit.
+						</p>
 					</div>
 				</div>
 			</div>
-		</section>
-
-		<!-- Four -->
-		<section class="main style4">
+			
+			<hr>
+			
 			<div class="container">
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium">
-						<header class="major">
-							<h2>
-								<b>Current State</b>
-							</h2>
-							
-						</header>
-						<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7395989283368767488" height="1003" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
-
+						<h3><b>Shape based houses</b></h3>
+						<p>
+							Using similar approaches, houses defined by simple shapes (circle, rectangles, etc) are created in realtime as well.<br>
+							<br>
+							Building the roof was the most fun part, but involved a lot of hand tunning in the end.
+						</p>
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium">
-						<iframe class="medium" src="https://www.youtube.com/embed/l77ZW5ApErc" frameborder="0" allowfullscreen></iframe>
+						<img src="images/PCG/FullBuildingGeneration.gif" class="medium">
+						<p>
+							^ Changing params of a house in realtime <br>
+							Buildig body is cut by 2D windows.
+						</p>
 					</div>
 				</div>
 			</div>
+			
+			<hr>
+			
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						<h3><b>Cutting windows</b></h3>
+						Adding windows on buildings is a major feature in the game. As I was designing this feature in the pre-production, there are there important aspects:<br>
+						- Handy to use for users <br>
+						- Fast to calculate <br>
+						- Easy to expand in various shapes.<br>
+						<br>
+						
+						My first approach is to "flattern" the spline from 3D space to a 2D coordinate. The x axis is distance along the spline.<br>
+						Therefore I could cut bricks (which are rectangles in this coordinate) with my defined shapes.<br>
+						<br>
+						While this approach seemed promising at first, it became way harder to maintain as I expanded to more shapes: for every newly added shape, a new intersection function had to be implemented. And the shader quickly grewed into a giant if tree containing many shapes.<br>
+						<br>
+						To make things worse, once I shifted to walls with thickness, it was nearly impossible to populate window frames efficiently, because that means sampling through the bezier spline once again.
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium">
+						<img src="images/PCG/FlatternSplineto2D.png" class="medium">
+						<p>^ Press flat the bezier curve, x axis is distance along the spline</p>
+				
+						<iframe class="medium" src="https://www.youtube.com/embed/9B-i53MfF9k" frameborder="0" allowfullscreen></iframe>
+						<p>^ In 2D space, cut bricks using defined shapes</p>
+						
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium">
+						
+							So I refactored the cutting windows. Instead of endless trimming and fixing in 2D space, the new windows are represented by <b>oriented bounding boxes (OBB)</b><br>
+							And extra bircks to construct window frames are only local to the OBB, decoupled from the spline it resides on.<br>
+							<br>
+							But what about different shapes, you may ask. Well, using oriented bounding box, I'm cutting off extra bricks from the buildings. So to construct a certain shape, I'd only have to implement different filling methods inside the bounding box.<br>
+							<br>
+							As of the transfrom of the bounding box, I can safely let CPU handle that. As of Feb 18, 2026, I implemented an auto adjusting size feature based on spline's curvature, but I don't think it suits the gameplay requirements. More updates will follow once I find some time.
+							
+					</div>
+					<div class="col-6 col-12-medium imp-medium">						
+						<iframe class="medium" src="https://www.youtube.com/embed/Gjbebifnvy0" frameborder="0" allowfullscreen></iframe>
+						<iframe class="medium" src="https://www.youtube.com/embed/DtvkuO7v7G4" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+			
+		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
 		</section>
+		
+		<section class="main style4" id="Culling">
+			<div class="container" >
+				<h2><b>Rendering optimization</b></h2>
+				<p>
+					As the density of bricks increased, the cost of rendering all mesh instances surpassed the cost of generating them. After profiling the frame time in RenderDoc, 	the bottleneck was in fragment shader. <br>
+					The solution is clear: cull unseeable instances to minimize the instance draw count.<br>
+					<br>
+					I implemented <b>Hierarchical-Z (Hi-Z) occlusion culling</b> after simple frustum culling wasn't enough.
+				</p>
+				<hr>
+				
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium imp-medium">
+						<h3><b>Who are occluders?</b></h3>
+						<p> 
+							For occlusion culling, the usual pipeline is to find objects in scene as <b>occluders</b>, pre render them to get the depth texture, and use it to test against the rest of the meshes.<br> 
+							<br>
+							Unlike most games where occluders can be picked from CPU side, in my game, most of the mesh instances are directly rendered through GPU. <br>
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+						<p>
+							If I were to pick occluders among generated mesh instances, there are two major problems:  <br>
+							<br>
+							A) It would be very complicated to pick among mesh instances to be occluders. <br>
+							B) In most cases, each mesh instances only takes up a small portion of the screen, therefore to have a good culling result, more occluder must be pre-rendered, kinda a pickle.<br>
+						</p>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium imp-medium">
+						<p> 	
+							You might see the collider meshes I generated along the spline (the green wireframe of the gif in right hand side), and wonder if they are good occluder candidates.<br>
+							<br>
+							Well, they are... if there's no cutting windows on the wall...<br>
+							When there's a window on a building, the player would expect to see what's behind.<br>
+							<br>
+							Given the complexity of procedurally generated buildings, what I needed is a culling pipeline <b>completely decoupled from the generation stage</b>.
+						</p>
+					</div>
+					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+						<img src="images/PCG/OcclusionCullWithCollider.gif" class="large">
+						<p></p>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium imp-medium">
+						<h3><b>My implementation of Hi-Z occlusion culling</b></h3>
+						<p> 
+							My pipeline:<br>
+							<br>
+							Blit last frame's depth texture from URP Render Graph System<br>
+							&emsp; ↓<br>
+							Generate hierarchical depth texture, stored in mipmap. For each mip level, store the largest value (the futherest distance) <br>
+							&emsp; ↓<br>
+							For each instance, transform the 8 vertices of its bounding box to uv space, forming a rectangle on screen. Use the size of the rect to find the correct mip level<br>
+							&emsp; ↓<br>
+							Test all 8 vertices against the depth value stored in mip, here the coordinate system might differ between texture space and screen's uv space.<br>
+							&emsp; ↓<br>
+							Cull the instances that are entirely behind the depth<br>
+							<br>
+							I have a more detailed introduction of each step in my LinkedIn.
+						</p>
+						<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7424201877237444608?collapsed=1" height="541" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+							
+					</div>
+					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+						<img src="images/PCG/GetDepthFromRenderGraph.png" class="large">
+						<p>^ Injecting my custom pass in URP Render Graph System to blit the depth texture</p>
+						
+						<iframe class="medium" src="https://www.youtube.com/embed/sXkrN3O7ntU" frameborder="0" allowfullscreen></iframe>
+						<p>^ Working Hi-Z occlusion culling result, depth mipmap generated each frame, players can see through the windows.</p>
+					</div>
+
+				</div>		
+			</div>		
+		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
+		</section>
+		
+		<section class="main style4" id="Aesthetic">
+			<div class="container" >
+				<h2><b>Aesthetic</b></h2>
+
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium imp-medium">
+						<h3><b>coming soon</b></h3>
+						<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
+						</p>
+						
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+
+					</div>
+
+				</div>		
+			</div>		
+		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
+		</section>
+		
+			
+	<section class="main style4" id="tooling">
+		<div class="container">
+			<h2><b>Editor Tool</b></h2>
+			<p>
+				coming soon 
+			</p>
+		</div>
+		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
+	</section>
+
 	<div id="site-footer"></div>
 
 		<!-- Scripts -->
