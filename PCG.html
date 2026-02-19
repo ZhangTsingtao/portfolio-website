@@ -19,63 +19,63 @@
 		<div id="site-header"></div>
 		<script src="assets/js/header.js"></script>
 
-			<section class="main style4" id="overview">
-				<div class="container" >
-					<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Runtime Procedural Generation</font></b></h1>
-					<h2 style="font-style: italic; text-align: center;">
-						A tower defense game
-					</h2>
+		<section class="main style4" id="overview">
+			<div class="container" >
+				<h1 style="text-align: center; margin-left: 0%; font-size:45px"> <b><font color="FFFFFF">Runtime Procedural Generation</font></b></h1>
+				<h2 style="font-style: italic; text-align: center;">
+					A tower defense game
+				</h2>
 
-					<div class="row gtr-150">
-						<div class="col-8 col-12-medium imp-medium">
-							<h3><b>Overview</b></h3>
-							<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
-								Starting off as a tech demo, it has grown into an ongoing part time project with my friends. Currently, I'm leading the development of the core feature: <b>procedurally generated buildings, interactable in realtime</b>.
-								<br> 
-								<br>
-								The realtime PCG pipeline: <br>
-								<br>
+				<div class="row gtr-150">
+					<div class="col-8 col-12-medium imp-medium">
+						<h3><b>Overview</b></h3>
+						<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
+							Starting off as a tech demo, it has grown into an ongoing part time project with my friends. Currently, I'm leading the development of the core feature: <b>procedurally generated buildings, interactable in realtime</b>.
+							<br> 
+							<br>
+							The realtime PCG pipeline: <br>
+							<br>
 
-								Building data managed in CPU <br>(Bezier splines, Oriented bounding boxes, and analytical shapes)
-								<br><br>
-								&emsp; ↓ &emsp; Pass to GPU buffers<br>
-								<br>
-								Compute shaders generate transforms for each brick mesh<br>
-								<br>
-								&emsp; ↓ &emsp; Append transforms to a buffer<br>
-								<br>
-								Cull unseeable brick meshes (visible and shadows)<br>
-								<br>
-								&emsp; ↓ &emsp; Append survived instance to another buffer for render<br>
-								<br>
-								Draw all remaining meshes using RenderMeshIndirect API
-							</p>
-							
-							
-						</div>
-						<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
-							<h3><b>Duration</b></h3>
-							<p>07/2025 - now</p>
+							Building data managed in CPU <br>(Bezier splines, Oriented bounding boxes, and analytical shapes)
+							<br><br>
+							&emsp; ↓ &emsp; Pass to GPU buffers<br>
+							<br>
+							Compute shaders generate transforms for each brick mesh<br>
+							<br>
+							&emsp; ↓ &emsp; Append transforms to a buffer<br>
+							<br>
+							Cull unseeable brick meshes (visible and shadows)<br>
+							<br>
+							&emsp; ↓ &emsp; Append survived instance to another buffer for render<br>
+							<br>
+							Draw all remaining meshes using RenderMeshIndirect API
+						</p>
+						
+						
+					</div>
+					<div class="col-4 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+						<h3><b>Duration</b></h3>
+						<p>07/2025 - now</p>
 
-							<h3><b>Tools</b></h3>
-							<p>Unity, URP, C#, HLSL, Unreal</p>
-							<p>
-								<b>In this page:</b><br>
-								<a href="PCG.html#journey">#Trial and error</a><br>
-								<a href="PCG.html#PCG">#Realtime procedural generation</a><br>
-								<a href="PCG.html#Culling">#Rendering optimization</a><br>
-								<a href="PCG.html#Aesthetic">#Aesthetic</a><br>
-								<a href="PCG.html#tooling">#Editor Tool</a>
-							</p>
-							
+						<h3><b>Tools</b></h3>
+						<p>Unity, URP, C#, HLSL, Unreal</p>
+						<p>
+							<b>In this page:</b><br>
+							<a href="PCG.html#journey">#Trial and error</a><br>
+							<a href="PCG.html#PCG">#Realtime procedural generation</a><br>
+							<a href="PCG.html#Culling">#Rendering optimization</a><br>
+							<a href="PCG.html#Aesthetic">#Aesthetic</a><br>
+							<a href="PCG.html#tooling">#Editor Tool</a>
+						</p>
+						
 
-						</div>
-						<iframe class="large" src="https://www.youtube.com/embed/DjHhNw78uR8" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<iframe class="large" src="https://www.youtube.com/embed/DjHhNw78uR8" frameborder="0" allowfullscreen></iframe>
 
-					</div>		
-				</div>
-				
-			</section>
+				</div>		
+			</div>
+			
+		</section>
 
 		<section class="main style4" id="journey">
 			<div class="container">
@@ -166,7 +166,7 @@
 					</div>
 				</div>
 			</div>
-		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
+			<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
 		</section>
 
 
@@ -408,31 +408,94 @@ struct TransformCS
 
 				<div class="row gtr-150">
 					<div class="col-6 col-12-medium imp-medium">
-						<h3><b>coming soon</b></h3>
-						<p style="text-align: left; margin-left: 0%; font-size:20px;"> 
+						<h3><b>Coloring</b></h3>
+						<p> 
+							The color of the bricks is an important visual cue for gameplay as well as aesthetic.<br>
+							<br>
+							In fragment shader, I referenced an albedo texture, divided into 16 grids, containting all combination of the base color, you can think of it as a lightweight texture atlass.<br>
+							<br>
+							The user can specify an int ranged [0, 15] for each curve to decide its color. This index is then passed to pcgParam field in the TransformCS struct, becoming a 16-bit float (half).<br>
+							<br>
+							And in generation shader, its decimal part is randomized, which affects the luminance and hue based from the albedo color.<br>
+							<br>
+							
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+						<img src="images/PCG/ColorPalette.png" class="small">
+						<p>
+							^ The testing albedo texture atlass, the color to pick is indexed by pcgParam compacted in the TransformCS struct.<br>
+							With proper uv unwrapping, it works just like any albedo texture.
+						</p>
+						<iframe class="medium" src="https://www.youtube.com/embed/MbmfaCVmxzM" frameborder="0" allowfullscreen></iframe>
+					</div>
+
+				</div>		
+			</div>	
+			
+			<hr>
+			
+			<div class="container" >
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium imp-medium">
+						<h3><b>Oil Painting Post FX</b></h3>
+						<p>
+							I wanted to apply a NPR aesthetic but slightly different from toon shading. After some research, Kuwahara filter became my choice. It creats an oil painting effects, abstracting the far objects, while still preserving the edges on closer objects.<br>
+							<br>
+							I first tried the original <a href="https://dl.acm.org/doi/abs/10.1109/TIP.2007.903912">Generalized Kuwahara Filter by Papari et al</a> , where they divided the neighboring into 8 slices in a circle, and take the most influential slices as the fragment's color.
+							<img src="images/PCG/GeneralizedKuwaharaByPapari et al.png" class="medium">
+							^ the 8 slices surrounding the target fragment, image from the original paper by Papari et al.<br>
+							<br>
+							However, I experienced a huge performance impact, even after I replaced the gaussian weights with a polynomial function in <a href="https://www.researchgate.net/profile/Amir-Semmo/publication/314039497_Anisotropic_Kuwahara_Filtering_with_Polynomial_Weighting_Functions/links/58b1d33b45851503be9b134e/Anisotropic-Kuwahara-Filtering-with-Polynomial-Weighting-Functions.pdf">this paper</a>. The heavy filter dropped my fps from ~400 to ~150 :( <br>
+							<br>
+							Inspecting the implementation, I concluded that the main bottleneck is the GPU memory: the filter stores 8 float4 for every pixel (because there's 8 slices), and averaging them by weights.<br>
+							However, if the sharpness is high enough, the result is basically the same with <b>picking the color of the most influential slice</b>.<br>
+							<br>
+							Therefore, instead of stroing 8 float4 for each pixel, I just put it into a loop, selecting the most influential slice, and use its average color. The result is equivalent to the original filter with a high sharpness tune, with works well in my game.<br>
+							Most importantly, <b>this change saved my framerate from 150 to 250</b>.
 						</p>
 						
 						
 					</div>
 					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
-
+						<img src="images/PCG/KuwaharaFilter.png" class="medium">
+						<iframe class="medium" src="https://www.youtube.com/embed/Rn2voTvenQU" frameborder="0" allowfullscreen></iframe>
+						<img src="images/PCG/OutlinePostFX.png" class="medium">
+						<p>I also tried an outline filter on top of the Kuwahara</p>
 					</div>
 
 				</div>		
-			</div>		
+			</div>
+			
 		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
 		</section>
 		
 			
-	<section class="main style4" id="tooling">
-		<div class="container">
-			<h2><b>Editor Tool</b></h2>
-			<p>
-				coming soon 
-			</p>
-		</div>
-		<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
-	</section>
+		<section class="main style4" id="tooling">
+			<div class="container">
+				<h2><b>Editor Tool</b></h2>
+				<div class="row gtr-150">
+					<div class="col-6 col-12-medium imp-medium">
+						<h3><b>Spline editor</b></h3>
+						<p> 
+							I implemented my own spline library to best fit the wall feature: it supports offset width, heights, and various tangent mode.<br>
+							<br>
+							To help level layout and debugging, I designed a spline editor tool, efficiently packaging all potential gameplay inputs.
+						</p>
+						
+					</div>
+					<div class="col-6 col-12-medium imp-medium" style="text-align: left; margin-right: 0%;">
+						<img src="images/PCG/SplineEditorTool.gif" class="large">
+						<p>
+							^ Spline editor tool
+						</p>
+					</div>
+				
+				</div>		
+			</div>
+			<p style="text-align: right;"><a href="PCG.html#overview">&uarr; Back to top</a></p>
+		</section>
 
 	<div id="site-footer"></div>
 
