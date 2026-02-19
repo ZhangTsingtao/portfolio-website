@@ -33,8 +33,9 @@
 								Starting off as a tech demo, it has grown into an ongoing part time project with my friends. Currently, I'm leading the development of the core feature: <b>procedurally generated buildings, interactable in realtime</b>.
 								<br> 
 								<br>
-								The realtime PCG pipeline: 
-								<hr>
+								The realtime PCG pipeline: <br>
+								<br>
+
 								Building data managed in CPU <br>(Bezier splines, Oriented bounding boxes, and analytical shapes)
 								<br><br>
 								&emsp; ↓ &emsp; Pass to GPU buffers<br>
@@ -45,10 +46,9 @@
 								<br>
 								Cull unseeable brick meshes (visible and shadows)<br>
 								<br>
-								&emsp; ↓ <br>
+								&emsp; ↓ &emsp; Append survived instance to another buffer for render<br>
 								<br>
 								Draw all remaining meshes using RenderMeshIndirect API
-								<hr>
 							</p>
 							
 							
@@ -378,7 +378,7 @@ struct TransformCS
 							Test all 8 vertices against the depth value stored in mip, here the coordinate system might differ between texture space and screen's uv space.<br>
 							&emsp; ↓<br>
 							Cull the instances that are entirely behind the depth<br>
-							<br>
+							<hr>
 							I have a more detailed introduction of each step in my LinkedIn.
 						</p>
 						<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7424201877237444608?collapsed=1" height="541" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
@@ -388,8 +388,13 @@ struct TransformCS
 						<img src="images/PCG/GetDepthFromRenderGraph.png" class="large">
 						<p>^ Injecting my custom pass in URP Render Graph System to blit the depth texture</p>
 						
+						<img src="images/PCG/DepthMipMap.gif" class="large">
+						<p>^ Generate mip maps, only taking the max value (the furtherest distance)</p>
+						
 						<iframe class="medium" src="https://www.youtube.com/embed/sXkrN3O7ntU" frameborder="0" allowfullscreen></iframe>
-						<p>^ Working Hi-Z occlusion culling result, depth mipmap generated each frame, players can see through the windows.</p>
+						<p>^ Working Hi-Z occlusion culling result. <br>
+							Depth texture fetched and mipmap generated each frame.<br>
+							Players can see through the windows.</p>
 					</div>
 
 				</div>		
